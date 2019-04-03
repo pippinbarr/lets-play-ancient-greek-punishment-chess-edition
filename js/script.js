@@ -55,9 +55,13 @@ function playBlack() {
   game.move(blackMove);
   board.position(game.fen(),true);
 
+  console.log(game.pgn({newline_char: 'XXX'}));
+
+  $('#pgn').append(`<div>${game.pgn().replace(/\[.*\]/g,'')}</div>`);
+
   setTimeout(() => {
     playBlack();
-  },2000);
+  },500);
 }
 
 // Called when a square is clicked

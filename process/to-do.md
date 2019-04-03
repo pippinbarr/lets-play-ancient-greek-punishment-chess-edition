@@ -3,9 +3,11 @@
 - ~~Get basic interactive chess board working (chessboard.js)~~
 - ~~Get some version of chess.js doing something~~
 - ~~Implement [Chess AI](https://medium.freecodecamp.org/simple-chess-ai-step-by-step-1d55a9266977)~~
+- ~~__YUP. IT CAN BEAT YOU IN 8__ Can this chess beat you in 53 moves?~~
+- ~~__UH DUMMY, THEY ARE.__ Consider whether to implement the piece location tables (which aren't in their final example)~~
 
-- Consider whether to implement the piece location tables (which aren't in their final example)
-- Can this chess beat you in 53 moves?
+- Think about how to make this a non-disgusting coding experience (OOP???)
+- All games need to show PGN throughout
 
 ## Sisyphus
 
