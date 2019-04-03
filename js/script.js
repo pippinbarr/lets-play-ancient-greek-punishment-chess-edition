@@ -2,10 +2,11 @@
 
 /*****************
 
-Title of Project
-Author Name
-
-This is a template. You must fill in the title,
-author, and this description to match your project!
+Let's Play: Ancient Greek Punishment: Chess Edition
+Pippin Barr
 
 ******************/
+
+$(document).ready(function () {
+  let board = ChessBoard('board','start');
+});
