@@ -29,7 +29,36 @@ $(document).ready(function () {
 
   // Listen for clicks on the squares of the chessboard
   $('.square-55d63').on('click',squareClicked);
+
+  playBlack();
 });
+
+let moves = 0;
+function playBlack() {
+  if (game.in_checkmate()) {
+    console.log(`Checkmate in ${moves} moves.`);
+    return;
+  }
+
+  moves++;
+
+  let fen = game.fen();
+  console.log(fen);
+  let fenArray = fen.split(' ');
+  fenArray[1] = 'b';
+  fenArray[3] = '-'; // Really don't get how this goes wonky and needs this 'fix'
+  fen = fenArray.join(' ');
+
+  game.load(fen);
+
+  let blackMove = getBlackMove();
+  game.move(blackMove);
+  board.position(game.fen(),true);
+
+  setTimeout(() => {
+    playBlack();
+  },2000);
+}
 
 // Called when a square is clicked
 function squareClicked() {
@@ -161,6 +190,7 @@ function getAbsoluteValue (piece, isWhite, x ,y) {
 
 function minimaxRoot (depth, game, isMaximisingPlayer) {
   var newGameMoves = game.moves();
+
   var bestMove = -9999;
   var bestMoveFound;
 
