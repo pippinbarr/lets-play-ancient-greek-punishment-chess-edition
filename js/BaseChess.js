@@ -24,13 +24,10 @@ class BaseChess {
   }
 
   squareClicked(event) {
-    console.log(event.currentTarget);
     // Find out the notation of the square and also the element representing the piece
     let square = $(event.currentTarget).attr('data-square');
     let piece = $(event.currentTarget).find('.piece-417db');
     let validPiece = (piece.length !== 0 && piece.attr('data-piece').indexOf(this.game.turn()) !== -1);
-
-    console.log(square,piece,validPiece);
 
     if (this.from === null && validPiece) {
       // We haven't selected a move yet + a piece of the correct colour was selected
@@ -55,8 +52,6 @@ class BaseChess {
     this.clearHighlights();
 
     this.from = square;
-
-    console.log(this.game.fen());
 
     let moves = this.game.moves({
       square: this.from,

@@ -12,7 +12,7 @@ let board;
 
 $(document).ready(function () {
   // Create our default game
-  let chess = new Prometheus();
+  let chess = new Tantalus();
 
   // Listen for clicks on the squares of the chessboard
   $('.square-55d63').on('click', function (event) {
