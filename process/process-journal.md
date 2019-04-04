@@ -95,3 +95,21 @@ Okay, so I kind of feel like there's nothing too overwhelming lurking in there (
 However there's the question of how to structure the code so this doesn't turn into horrible spaghetti bullshit. Buuuut there's also the whole idea of "just hack that shit together" instead. Buuuut I could also create a class representing a basic game of chess and then extend and override the parts needed to create my  versions, which would be significantly cleaner.
 
 I guess I lean toward a bit of structure. Okay fine. Fine. Yeah fine. Okay fine. Sure. Okay fine sure okay  fine yeah okay.
+
+---
+
+# Some decisions (Thursday, 4 April 2019, 9:33AM)
+
+Having run the variations past Rilla last night (or was it this morning? Who can tell?) I want to record the directions I'll go in for each version quickly...
+
+__Sisyphus__ will be as is, you move your piece, it slides back, no move is registered, you never get past the initial attempt to move.
+
+__Prometheus__ will be the white king versus the full black set of pieces, you move the king around to "struggle" but ultimately must succumb presumably (will need to make sure black can win, but I'd be surprised if it couldn't)
+
+In __Zeno__ you move, the piece slides halfway, back moves, halfway again, and so forth.
+
+In __Tantalus__ the black king is off the board, you play as normal, you can't win because you can't attack the king.
+
+In __Danaids__ every capture results in the captured piece reappearing on or near its original square, and that's it.
+
+So on with the show right?
