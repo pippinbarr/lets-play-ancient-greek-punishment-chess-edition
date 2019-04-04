@@ -19,7 +19,7 @@ $(document).ready(function () {
   board = ChessBoard('board', config);
 
   // Create our default game
-  let chess = new BaseChess(board);
+  let chess = new Sisyphus(board);
 
   // Listen for clicks on the squares of the chessboard
   $('.square-55d63').on('click', function (event) {
