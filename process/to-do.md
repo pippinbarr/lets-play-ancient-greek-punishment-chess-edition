@@ -26,6 +26,12 @@
 
 ## Tantalus
 
+- ~~__LET'S TAKE THE EASY ROUTE FOR NOW__ Fix the fact that chess.js seems to break when you play with no kings (perhaps it's to do with attempting to castle? Or otherwise move something involving the king's square? How to fix this? One option is to move ALL pieces off the board and not have any... the other is to actively change chess.js for this project. Yiiikes.)~~
+- ~~Show the black pieces off the top of the board~~
+
+- Styling of black pieces isn't great
+- How do I feel about this "all the pieces" versus "just the king" approach???
+
 ## Danaids
 
 ## Mobile?
