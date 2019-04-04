@@ -11,15 +11,8 @@ Pippin Barr
 let board;
 
 $(document).ready(function () {
-  // Create our chessboard
-  let config = {
-    draggable: false,
-    position: 'start',
-  };
-  board = ChessBoard('board', config);
-
   // Create our default game
-  let chess = new Sisyphus(board);
+  let chess = new Prometheus();
 
   // Listen for clicks on the squares of the chessboard
   $('.square-55d63').on('click', function (event) {

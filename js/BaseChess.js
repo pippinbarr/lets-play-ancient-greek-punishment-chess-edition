@@ -2,11 +2,16 @@
 
 class BaseChess {
 
-  constructor (board) {
+  constructor (depth) {
+    let config = {
+      draggable: false,
+      position: 'start',
+    };
+    this.board = ChessBoard('board', config);
     this.game = new Chess();
-    this.board = board;
     this.from = null;
     this.moves = 0;
+    this.depth = depth;
     this.positionsExamined = 0;
   }
 
@@ -50,6 +55,8 @@ class BaseChess {
     this.clearHighlights();
 
     this.from = square;
+
+    console.log(this.game.fen());
 
     let moves = this.game.moves({
       square: this.from,
@@ -98,7 +105,7 @@ class BaseChess {
 
   getBlackMove() {
     this.positionsExamined = 0;
-    let move = this.minimaxRoot(2,this.game,true)
+    let move = this.minimaxRoot(this.depth,this.game,true)
     console.log(`Examined ${this.positionsExamined} positions.`);
     return move;
   }

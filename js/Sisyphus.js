@@ -2,8 +2,8 @@
 
 class Sisyphus extends BaseChess {
 
-  constructor (board) {
-    super (board);
+  constructor () {
+    super (0);
   }
 
   moveWhite(from,to) {
