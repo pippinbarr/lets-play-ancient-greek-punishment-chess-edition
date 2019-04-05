@@ -28,9 +28,13 @@
 
 - ~~__LET'S TAKE THE EASY ROUTE FOR NOW__ Fix the fact that chess.js seems to break when you play with no kings (perhaps it's to do with attempting to castle? Or otherwise move something involving the king's square? How to fix this? One option is to move ALL pieces off the board and not have any... the other is to actively change chess.js for this project. Yiiikes.)~~
 - ~~Show the black pieces off the top of the board~~
+- ~~__LESS OF A PROBLEM NOW? Styling of black pieces isn't great__~~
+- ~~__I VASTLY  PREFER JUST THE KING__ How do I feel about this "all the pieces" versus "just the king" approach??? (Maybe we could go with no piece but just the king visible off the board as the "apple"?)~~
+- ~~__THIS IS CUTE BUT SOUNDS REALLY COMPLEX AND IS SUCH A DELAYED GAG I'm GOING TO  GUESS NOBODY WOULD SEE IT__ King steps off the board when in check? (And back on when he wouldn't be in check?)~~
+- ~~__FUNNY, BUT A BIT UNWEILDY?__ Two separate chessboards one with black one with white? (Bit weird because it's implying black has the same problem - but maybe if it's just the king...)~~
+- ~~__I AM A PROGRAMMING GOD__ Fix chess.js to deal with the situation where black has no king~~
 
-- Styling of black pieces isn't great
-- How do I feel about this "all the pieces" versus "just the king" approach???
+- Improve styling of the king off the board (proper alignment etc.)
 
 ## Danaids
 

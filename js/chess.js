@@ -504,9 +504,10 @@ var Chess = function(fen) {
   function generate_moves(options) {
     function add_move(board, moves, from, to, flags) {
       if (board[from] === null || board[from] === undefined) {
-        console.log(board,moves,from,to,flags);
+        // console.log(board,moves,from,to,flags);
       }
       /* if pawn promotion */
+
       if (
         board[from].type === PAWN &&
         (rank(to) === RANK_8 || rank(to) === RANK_1)
@@ -608,8 +609,9 @@ var Chess = function(fen) {
     /* check for castling if: a) we're generating all moves, or b) we're doing
      * single square move generation on the king's square
      */
-    if (!single_square || last_sq === kings[us]) {
+    if ((!single_square || last_sq === kings[us]) && kings[us] !== -1) {
       /* king-side castling */
+
       if (castling[us] & BITS.KSIDE_CASTLE) {
         var castling_from = kings[us];
         var castling_to = castling_from + 2;
@@ -626,7 +628,9 @@ var Chess = function(fen) {
       }
 
       /* queen-side castling */
-      if (castling[us] & BITS.QSIDE_CASTLE) {
+      if (castling[us] & BITS.QSIDE_CASTLE && kings[us] !== -1) {
+
+
         var castling_from = kings[us];
         var castling_to = castling_from - 2;
 
@@ -638,6 +642,7 @@ var Chess = function(fen) {
           !attacked(them, castling_from - 1) &&
           !attacked(them, castling_to)
         ) {
+          // console.log(kings[us]);
           add_move(board, moves, kings[us], castling_to, BITS.QSIDE_CASTLE);
         }
       }
@@ -647,6 +652,7 @@ var Chess = function(fen) {
      * to be captured)
      */
     if (!legal) {
+      // console.log("generate_moves returning !legal moves...")
       return moves;
     }
 
@@ -659,6 +665,9 @@ var Chess = function(fen) {
       }
       undo_move();
     }
+
+    // console.log("generate_moves() returning legal_moves...");
+    // console.log(legal_moves.length);
 
     return legal_moves;
   }
@@ -1287,7 +1296,10 @@ var Chess = function(fen) {
        * unnecessary move keys resulting from a verbose call.
        */
 
+       // console.log("generating ugly_moves with generate_moves()...")
       var ugly_moves = generate_moves(options);
+      // console.log("generate_moves() returned these ugly_moves...")
+      // console.log(ugly_moves);
       var moves = [];
 
       for (var i = 0, len = ugly_moves.length; i < len; i++) {
