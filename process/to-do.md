@@ -44,6 +44,10 @@
 
 ## Danaids
 
+- ~~__JUST A SIMPLE RESPAWN ACTUALLY LOOKS QUITE GOOD, NO PARTICULAR NEED TO ANIMATE IN FANCY WAYS?__ Get a basic version of respawning pieces when captured going~~
+
+- Am I seeing some weird behaviour in terms of placement?
+
 ## Mobile?
 
 - No reason why not? Are those libraries mobile compatible? I think they are?

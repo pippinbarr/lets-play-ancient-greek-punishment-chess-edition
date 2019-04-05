@@ -38,6 +38,10 @@ function menuButtonClicked() {
     chess = new Zeno();
     break;
 
+    case 'danaids':
+    chess = new Danaids();
+    break;
+
     default:
     chess = false;
     break;
