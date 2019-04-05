@@ -34,6 +34,10 @@ function menuButtonClicked() {
     chess = new Tantalus();
     break;
 
+    case 'zeno':
+    chess = new Zeno();
+    break;
+
     default:
     chess = false;
     break;

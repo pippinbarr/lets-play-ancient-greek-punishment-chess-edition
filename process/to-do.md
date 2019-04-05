@@ -24,6 +24,12 @@
 
 ## Zeno
 
+- ~~Handle piece animation outside chessboard.js (remove the piece from the board once they move it so that the game doesn't think about it - what about e3? Doesn't matter as no response could cause a problem?)~~
+
+- Work on how it looks (does it look too weird when black pieces overlap the square that the Zeno piece is trying to get to?)
+- Implement PGN esp. here since it will help a huge amount to clarify  what's going on? Particularly  at tinier amounts of distance. (Maybe once the distance hits 1px we stop "animating" to avoid weirdness)
+- Why does it seem like the AI grinds to a halt in this version???
+
 ## Tantalus
 
 - ~~__LET'S TAKE THE EASY ROUTE FOR NOW__ Fix the fact that chess.js seems to break when you play with no kings (perhaps it's to do with attempting to castle? Or otherwise move something involving the king's square? How to fix this? One option is to move ALL pieces off the board and not have any... the other is to actively change chess.js for this project. Yiiikes.)~~
