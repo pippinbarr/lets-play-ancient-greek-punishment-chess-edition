@@ -6,6 +6,17 @@ class BaseChess {
     let config = {
       draggable: false,
       position: 'start',
+      onMoveEnd: () => {
+        console.log(this.lastMove);
+        if (this.lastMove === null) return;
+        
+        if (this.lastMove.captured !== undefined) {
+          captureSFX.play();
+        }
+        else {
+          placeSFX.play();
+        }
+      }
     };
     this.board = ChessBoard('board', config);
     this.game = new Chess();
@@ -13,13 +24,14 @@ class BaseChess {
     this.moves = 0;
     this.depth = depth;
     this.positionsExamined = 0;
+    this.lastMove = null;
   }
 
 
   moveBlack() {
     this.moves++;
     let move = this.getBlackMove();
-    this.game.move(move);
+    this.lastMove = this.game.move(move);
     this.board.position(this.game.fen(),true);
   }
 
@@ -68,11 +80,12 @@ class BaseChess {
 
   moveWhite(from,to) {
     // Make the move in the game representation
-    let move = this.game.move({
+    let move = {
       from: from,
       to: to,
       promotion: 'q' // NOTE: always promote to a queen for example simplicity
-    });
+    };
+    this.lastMove = this.game.move(move);
 
     // Clear all highlights from the board (a new turn is about to begin)
     this.clearHighlights();

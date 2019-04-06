@@ -8,11 +8,12 @@ class Sisyphus extends BaseChess {
 
   moveWhite(from,to) {
     // Make the move in the game representation
-    let move = this.game.move({
+    let move = {
       from: from,
       to: to,
       promotion: 'q' // NOTE: always promote to a queen for example simplicity
-    });
+    };
+    this.lastMove = this.game.move(move);
 
     // Clear all highlights from the board
     this.clearHighlights();

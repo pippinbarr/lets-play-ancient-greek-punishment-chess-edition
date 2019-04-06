@@ -6,21 +6,24 @@
 - ~~__YUP. IT CAN BEAT YOU IN 8__ Can this chess beat you in 53 moves?~~
 - ~~__UH DUMMY, THEY ARE.__ Consider whether to implement the piece location tables (which aren't in their final example)~~
 - ~~Think about how to make this a non-disgusting coding experience (OOP???)~~
+- ~~All games need SFX for movement, captures~~
 
 - All games need to show PGN throughout
+
 
 ## Sisyphus
 
 - ~~Undo the move right after it's made~~
+- ~~__IT'S FINE. THERE'S A NATURAL PURITY TO MAINTAINING EXISTING "CHESS" SPEEDS PER CHESSBOARD.JS__ Think about animation speeds (jQuery.animate() myself? Bleagh.)~~
 
 - Show PGN and undo it
-- Think about animation speeds (jQuery.animate() myself? Bleagh.)
 
 ## Prometheus
 
 - ~~Remove all white pieces except king and let the game run normally~~
 
 - Handle stalemate in the move calculations (should avoid unless it's the only move?) (IT IS SURPRISINGLY EASY TO MAKE IT STALEMATE YOU. BOO.)
+- Handle PGN (can be totally standard)
 
 ## Zeno
 
@@ -41,12 +44,14 @@
 - ~~__I AM A PROGRAMMING GOD__ Fix chess.js to deal with the situation where black has no king~~
 
 - Improve styling of the king off the board (proper alignment etc.)
+- Handle PGN (can be 100% standard)
 
 ## Danaids
 
 - ~~__JUST A SIMPLE RESPAWN ACTUALLY LOOKS QUITE GOOD, NO PARTICULAR NEED TO ANIMATE IN FANCY WAYS?__ Get a basic version of respawning pieces when captured going~~
+- ~~__I WAS AND NOW IT IS FIXED__ Am I seeing some weird behaviour in terms of placement?~~
 
-- Am I seeing some weird behaviour in terms of placement?
+- PGN (need notation for placement of piece in new position)
 
 ## Mobile?
 

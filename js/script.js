@@ -7,8 +7,10 @@ Pippin Barr
 
 ******************/
 
-// The chessboard
-let board;
+// The sound effects
+let placeSFX = new Audio('assets/sounds/place.wav');
+let captureSFX = new Audio('assets/sounds/capture.wav');
+let slideSFX = new Audio('assets/sounds/slide.wav');
 
 $(document).ready(function () {
 
