@@ -52,6 +52,13 @@ class Danaids extends BaseChess {
       gameFEN[0] = boardFEN[0];
       gameFEN = gameFEN.join(' ');
       this.game.load(gameFEN);
+
+      let captured = this.lastMove.captured.toUpperCase();
+      let note = `${captured}→${respawnSquare}`;
+      this.updatePGN(this.lastMove,`${note}`);
+    }
+    else {
+      this.updatePGN(this.lastMove);
     }
 
     // Clear all highlights from the board (a new turn is about to begin)

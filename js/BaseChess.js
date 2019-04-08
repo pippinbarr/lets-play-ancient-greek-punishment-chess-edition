@@ -43,8 +43,8 @@ class BaseChess {
       this.pgn += `${this.turn}. `;
     }
     this.pgn += `${move.san} `;
-    if (comment !== undefined) {
-      this.pgn += `(${note})`;
+    if (note !== undefined) {
+      this.pgn += `(${note}) `;
     }
     if (move.color === 'b') {
       this.pgn += `<br />`;

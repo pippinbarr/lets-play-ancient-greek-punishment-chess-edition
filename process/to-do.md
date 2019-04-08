@@ -23,9 +23,10 @@
 
 - ~~Remove all white pieces except king and let the game run normally~~
 - ~~__I THINK I'VE DONE SOMETHING REASONABLE__ Handle stalemate in the move calculations (should avoid unless it's the only move?) (IT IS SURPRISINGLY EASY TO MAKE IT STALEMATE YOU. BOO.)~~
+- ~~Handle PGN (can be totally standard)~~
 
 - Handle checkmate (and stalemate even though we think it should happen)
-- Handle PGN (can be totally standard)
+
 
 ## Zeno
 
@@ -47,17 +48,19 @@
 - ~~__FUNNY, BUT A BIT UNWEILDY?__ Two separate chessboards one with black one with white? (Bit weird because it's implying black has the same problem - but maybe if it's just the king...)~~
 - ~~__I AM A PROGRAMMING GOD__ Fix chess.js to deal with the situation where black has no king~~
 - ~~Improve styling of the king off the board (proper alignment etc.)~~
+- ~~Handle PGN (can be 100% standard)~~
 
-- Handle checkmate (and stalemate even though we think it should happen)
-- Handle PGN (can be 100% standard)
+- Handle checkmate (and stalemate even though we think it shouldn't happen)
+- I broke the styling
 
 ## Danaids
 
 - ~~__JUST A SIMPLE RESPAWN ACTUALLY LOOKS QUITE GOOD, NO PARTICULAR NEED TO ANIMATE IN FANCY WAYS?__ Get a basic version of respawning pieces when captured going~~
 - ~~__I WAS AND NOW IT IS FIXED__ Am I seeing some weird behaviour in terms of placement?~~
+- ~~PGN (need notation for placement of piece in new position)~~
 
-- Handle checkmate (and stalemate even though we think it should happen)
-- PGN (need notation for placement of piece in new position)
+- Handle checkmate (and stalemate even though we think it shouldn't happen)
+
 
 ## Mobile?
 
