@@ -10,7 +10,8 @@
 
 ## Menu
 
-- Frame it as matches between the punished and the god
+- ~~Frame it as matches between the punished and the god~~
+
 - Have interstitial information that frames that encounter (look at some chess references)
 
 ## Sisyphus
@@ -31,11 +32,12 @@
 ## Zeno
 
 - ~~Handle piece animation outside chessboard.js (remove the piece from the board once they move it so that the game doesn't think about it - what about e3? Doesn't matter as no response could cause a problem?)~~
+- ~~__NOT SURE WHAT THAT WAS, BUT SEEMS OK NOW__ Why does it seem like the AI grinds to a halt in this version???~~
 
 - Work on how it looks (does it look too weird when black pieces overlap the square that the Zeno piece is trying to get to?)
 - Implement PGN esp. here since it will help a huge amount to clarify  what's going on? Particularly  at tinier amounts of distance. (Maybe once the distance hits 1px we stop "animating" to avoid weirdness)
-- Why does it seem like the AI grinds to a halt in this version???
-- Handle checkmate
+- Handle checkmate (notably we may need black to capture white's king since white is both helpless and could have a king move once the game gets going)
+- How will PGN work for movement between columns?
 
 
 ## Tantalus

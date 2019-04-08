@@ -29,15 +29,6 @@ class BaseChess {
     this.turn = 1;
   }
 
-
-  moveBlack() {
-    this.moves++;
-    let move = this.getBlackMove();
-    this.lastMove = this.game.move(move);
-    this.updatePGN(this.lastMove);
-    this.board.position(this.game.fen(),true);
-  }
-
   updatePGN(move,note) {
     if (move.color === 'w') {
       this.pgn += `${this.turn}. `;
