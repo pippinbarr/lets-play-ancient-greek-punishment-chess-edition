@@ -11,12 +11,12 @@ Pippin Barr
 let placeSFX = new Audio('assets/sounds/place.wav');
 let captureSFX = new Audio('assets/sounds/capture.wav');
 let slideSFX = new Audio('assets/sounds/slide.wav');
+let months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
 $(document).ready(function () {
 
   $('.menu_button').on('click',menuButtonClicked);
-  // Create our default game
-  let chess = new Tantalus();
+
 });
 
 
@@ -44,8 +44,8 @@ function menuButtonClicked() {
     chess = new Danaids();
     break;
 
-    default:
-    chess = false;
+    case 'chess':
+    chess = new BaseChess(2);
     break;
   }
 

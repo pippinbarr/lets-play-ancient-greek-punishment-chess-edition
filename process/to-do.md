@@ -17,8 +17,7 @@
 
 - ~~Undo the move right after it's made~~
 - ~~__IT'S FINE. THERE'S A NATURAL PURITY TO MAINTAINING EXISTING "CHESS" SPEEDS PER CHESSBOARD.JS__ Think about animation speeds (jQuery.animate() myself? Bleagh.)~~
-
-- Show PGN and undo it
+- ~~Show PGN and undo it~~
 
 ## Prometheus
 

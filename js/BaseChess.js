@@ -19,11 +19,14 @@ class BaseChess {
     };
     this.board = ChessBoard('board', config);
     this.game = new Chess();
+
     this.from = null;
     this.moves = 0;
     this.depth = depth;
     this.positionsExamined = 0;
     this.lastMove = null;
+    this.pgn = ``;
+    this.turn = 1;
   }
 
 
@@ -31,9 +34,23 @@ class BaseChess {
     this.moves++;
     let move = this.getBlackMove();
     this.lastMove = this.game.move(move);
+    this.updatePGN(this.lastMove);
     this.board.position(this.game.fen(),true);
+  }
 
-    // if (this.game.in_stalemate()) console.log(`STALEMATE.`);
+  updatePGN(move,note) {
+    if (move.color === 'w') {
+      this.pgn += `${this.turn}. `;
+    }
+    this.pgn += `${move.san} `;
+    if (comment !== undefined) {
+      this.pgn += `(${note})`;
+    }
+    if (move.color === 'b') {
+      this.pgn += `<br />`;
+      this.turn++;
+    }
+    $('#pgn').html(this.pgn);
   }
 
   squareClicked(event) {
@@ -87,6 +104,7 @@ class BaseChess {
       promotion: 'q' // NOTE: always promote to a queen for example simplicity
     };
     this.lastMove = this.game.move(move);
+    this.updatePGN(this.lastMove);
 
     // Clear all highlights from the board (a new turn is about to begin)
     this.clearHighlights();
