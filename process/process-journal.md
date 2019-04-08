@@ -145,3 +145,43 @@ Next steps?
 - Mobile?
 - Menu system
 - la la
+
+---
+
+# The GIF of Sisyphus, The PGN of Zeno, The checkmating of Zeno, Danaids and black in checkmate (Monday, 8 April 2019, 15:59PM)
+
+Made more progress and things are starting to hang together with bits and pieces of more serious problems. Most notably Zeno is causing trouble!
+
+## The GIF of Sisyphus
+
+Oh but for right now look it's a GIF of Sisyphus
+
+![](images/sisyphus-plays-chess.gif)
+
+The GIF of Sisyphus. Ha ha.
+
+Anyway, Zeno.
+
+## The PGN of Zeno
+
+So I realised a further problem while trying to implement the PGN - or rather just think about it - is that when you play a knight move it moves horizontally between columns which would mean needing to talk about fractional columns which... didn't make sense. But then I've been thinking maybe by using the algebraic look of the chess notation, we could do something like
+
+![](images/zeno-notation.png)
+
+Which is kind weird to look at, but would specify the first move of Nf3 as played by Zeno? That is, it's a move from f + the difference between g and f (one column) over two (to get halfway between f and g) and then the vertical component is what you'd expect - the destination minus half the distance remaining. Expressed as a formula there's something a little bit appealing about it I think? And it makes sense that this is roughly how it would look?
+
+Anyway I think this at least allows me to push forward with it.
+
+## The checkmating of Zeno
+
+The other problem with Zeno is that you can be kind of both in and not in checkmate. As in, you're not in checkmate according to the game because you could move the king or shield it, but because of the Zeno-ing of your initial move, in fact you can't defend yourself because that move isn't done, and so you are in a kind of checkmate.
+
+So how should black respond? I can either call the game off at that point, notating it as checkmate by throwing the hash onto it officially. It's checkmate because the king is in check, cannot move, and cannot be shielded.
+
+OR I allow black to capture the king. As I think about it, I'd rather avoid this avenue? It seems wrong to show the king being captured.
+
+## Danaids and black in checkmate
+
+Though this also speaks to Danaids, in which I don't really want the Danaid to checkmate black (doesn't make sense to win), and so one funny response is you get checkmate, capture the king, and on you go? But then that's the same weirdness.
+
+Perhaps when you checkmate the king is just moves to another square elsewhere (not in check obviously), similarly sliding through your fingers like water. I think I could live with that...
