@@ -4,6 +4,9 @@ class Zeno extends BaseChess {
 
   constructor () {
     super (3);
+    let date = new Date();
+    $('#header').text(`Sisyphus vs. Archimedes, Unknown location, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
+
   }
 
   moveWhite(from,to) {

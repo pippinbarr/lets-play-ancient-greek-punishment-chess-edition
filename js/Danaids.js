@@ -4,10 +4,9 @@ class Danaids extends BaseChess {
 
   constructor () {
     super(3);
-    // // Get each piece to remember where it originated
-    // $(`.piece-417db`).each(function () {
-    //   $(this).data('home-square',$(this).parent().attr('data-square'));
-    // });
+    let date = new Date();
+    $('#header').text(`Danaids vs. Zeus, Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
+
   }
 
   moveWhite(from,to) {

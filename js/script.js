@@ -54,7 +54,7 @@ function menuButtonClicked() {
   }
 
   $('#menu').hide();
-  $('#board').show();
+  $('#game').show();
 
   // Listen for clicks on the squares of the chessboard
   $('.square-55d63').on('click', function (event) {

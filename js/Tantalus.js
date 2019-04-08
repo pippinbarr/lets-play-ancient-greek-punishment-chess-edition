@@ -4,7 +4,9 @@ class Tantalus extends BaseChess {
 
   constructor () {
     super(3);
-    // this.game.load('8/8/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
+    let date = new Date();
+    $('#header').text(`Tantalus vs. Zeus, Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
+
     this.game.load('rnbq1bnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
     this.board.position(this.game.fen(),false);
 
