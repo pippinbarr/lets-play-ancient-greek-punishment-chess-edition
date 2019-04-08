@@ -113,3 +113,35 @@ In __Tantalus__ the black king is off the board, you play as normal, you can't w
 In __Danaids__ every capture results in the captured piece reappearing on or near its original square, and that's it.
 
 So on with the show right?
+
+---
+
+# Basic feature complete, further design thoughts (Monday, 8 April 2019, 12:11PM)
+
+Not totally sure what I specifically since the last entry but I guess it's all in the commits. Importantly all the versions now have some kind of approximate, playable edition. Importantly, all of them are pretty much there conceptually, I think with the exception of Zeno which isn't feeling so good at the moment in many ways.
+
+A couple of thoughts
+
+- There's something mildly disappointing about handling check-mate? Unless maybe each one is pitched as "you just need to win one game to be released from Hades?" - a bit like the whole idea that you play chess with death to escape the underworld? (As in, Bill and Ted's Bogus Journey?) That might make the framing more satisfying. Can I guarantee no wins for white? (Sisyphus √ Prometheus √ Tantalus √ Zeno √ Danaids... hm. Only if I implement the idea that you capture the king only to have it respawn? Ha ha? It would be VERY hard to win given you can't capture any pieces? So hard I don't worry?)
+
+- Keeping a score counter would be funny. And the PGN can have 'White (Sisyphus vs. Black (Zeus) or whatever???)' Ya h a h a.
+
+- I definitely find myself worrying about whether this whole thing is just too chess? Like this is pretty inside baseball (chess) stuff that might be deeply, deeply unappealing to 99% of people? But on the other hand how much should I give a shit? 0% you say? Oh ok.
+
+- Suspect each game probably needs a little intro to set the scene. Just that you need to win the game, who its against, what your crime was.
+
+- Maybe the menu can be framed in terms of matches?
+   - Sisyphus vs. Zeus
+   - Prometheus vs. Zeus
+   - Danaids vs. xxx etc...
+   - That's quite nice.
+
+- Okay that's some nice framing that makes me feel like the menu system will look less god awful.
+
+Next steps?
+
+- PGN
+- Fix broken shit
+- Mobile?
+- Menu system
+- la la

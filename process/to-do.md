@@ -8,8 +8,10 @@
 - ~~Think about how to make this a non-disgusting coding experience (OOP???)~~
 - ~~All games need SFX for movement, captures~~
 
-- All games need to show PGN throughout
+## Menu
 
+- Frame it as matches between the punished and the god
+- Have interstitial information that frames that encounter (look at some chess references)
 
 ## Sisyphus
 
