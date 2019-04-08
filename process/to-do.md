@@ -21,8 +21,9 @@
 ## Prometheus
 
 - ~~Remove all white pieces except king and let the game run normally~~
+- ~~__I THINK I'VE DONE SOMETHING REASONABLE__ Handle stalemate in the move calculations (should avoid unless it's the only move?) (IT IS SURPRISINGLY EASY TO MAKE IT STALEMATE YOU. BOO.)~~
 
-- Handle stalemate in the move calculations (should avoid unless it's the only move?) (IT IS SURPRISINGLY EASY TO MAKE IT STALEMATE YOU. BOO.)
+- Handle checkmate (and stalemate even though we think it should happen)
 - Handle PGN (can be totally standard)
 
 ## Zeno
@@ -32,6 +33,8 @@
 - Work on how it looks (does it look too weird when black pieces overlap the square that the Zeno piece is trying to get to?)
 - Implement PGN esp. here since it will help a huge amount to clarify  what's going on? Particularly  at tinier amounts of distance. (Maybe once the distance hits 1px we stop "animating" to avoid weirdness)
 - Why does it seem like the AI grinds to a halt in this version???
+- Handle checkmate
+
 
 ## Tantalus
 
@@ -42,8 +45,9 @@
 - ~~__THIS IS CUTE BUT SOUNDS REALLY COMPLEX AND IS SUCH A DELAYED GAG I'm GOING TO  GUESS NOBODY WOULD SEE IT__ King steps off the board when in check? (And back on when he wouldn't be in check?)~~
 - ~~__FUNNY, BUT A BIT UNWEILDY?__ Two separate chessboards one with black one with white? (Bit weird because it's implying black has the same problem - but maybe if it's just the king...)~~
 - ~~__I AM A PROGRAMMING GOD__ Fix chess.js to deal with the situation where black has no king~~
+- ~~Improve styling of the king off the board (proper alignment etc.)~~
 
-- Improve styling of the king off the board (proper alignment etc.)
+- Handle checkmate (and stalemate even though we think it should happen)
 - Handle PGN (can be 100% standard)
 
 ## Danaids
@@ -51,6 +55,7 @@
 - ~~__JUST A SIMPLE RESPAWN ACTUALLY LOOKS QUITE GOOD, NO PARTICULAR NEED TO ANIMATE IN FANCY WAYS?__ Get a basic version of respawning pieces when captured going~~
 - ~~__I WAS AND NOW IT IS FIXED__ Am I seeing some weird behaviour in terms of placement?~~
 
+- Handle checkmate (and stalemate even though we think it should happen)
 - PGN (need notation for placement of piece in new position)
 
 ## Mobile?

@@ -7,9 +7,8 @@ class BaseChess {
       draggable: false,
       position: 'start',
       onMoveEnd: () => {
-        console.log(this.lastMove);
         if (this.lastMove === null) return;
-        
+
         if (this.lastMove.captured !== undefined) {
           captureSFX.play();
         }
@@ -33,6 +32,8 @@ class BaseChess {
     let move = this.getBlackMove();
     this.lastMove = this.game.move(move);
     this.board.position(this.game.fen(),true);
+
+    // if (this.game.in_stalemate()) console.log(`STALEMATE.`);
   }
 
   squareClicked(event) {
@@ -114,15 +115,103 @@ class BaseChess {
   getBlackMove() {
     this.positionsExamined = 0;
     let move = this.minimaxRoot(this.depth,this.game,true)
-    console.log(`Examined ${this.positionsExamined} positions.`);
+    // console.log(`Examined ${this.positionsExamined} positions.`);
     return move;
   }
 
-  evaluateBoard (board) {
+
+
+  minimaxRoot (depth, game, isMaximisingPlayer) {
+    var newGameMoves = game.moves();
+    var evaluations = [];
+
+    var bestMove = -9999;
+    var bestMoveFound;
+
+    // console.log(`Starting depth is ${depth}`);
+
+    for(var i = 0; i < newGameMoves.length; i++) {
+      var newGameMove = newGameMoves[i]
+      game.move(newGameMove);
+      if (game.in_stalemate()) {
+        game.undo();
+        continue;
+      }
+      var value = this.minimax(depth - 1, game, -10000, 10000, !isMaximisingPlayer);
+      if (game.in_check()) {
+        value += 5;
+      }
+      evaluations.push({move: newGameMoves[i], evaluation: value});
+      game.undo();
+      if(value >= bestMove) {
+        bestMove = value;
+        bestMoveFound = newGameMove;
+      }
+    }
+    game.move(bestMoveFound);
+    if (game.in_stalemate()) {
+      evaluations.forEach(function (evaluation) {
+        // console.log(`${evaluation.move},${evaluation.evaluation}`);
+      });
+    }
+    game.undo();
+    return bestMoveFound;
+  }
+
+  minimax (depth, game, alpha, beta, isMaximisingPlayer) {
+    this.positionsExamined++;
+
+    if (depth === 0) {
+      return -this.evaluateBoard(game,game.board());
+    }
+
+    var newGameMoves = game.moves();
+
+    if (isMaximisingPlayer) {
+      var bestMove = -9999;
+      for (var i = 0; i < newGameMoves.length; i++) {
+        game.move(newGameMoves[i]);
+        if (game.in_stalemate()) {
+          game.undo();
+          continue;
+        }
+
+        let minimaxed = this.minimax(depth - 1, game, alpha, beta, !isMaximisingPlayer);
+        bestMove = Math.max(bestMove, minimaxed);
+        game.undo();
+        alpha = Math.max(alpha, bestMove);
+        if (beta <= alpha) {
+          return bestMove;
+        }
+      }
+      return bestMove;
+    } else {
+      var bestMove = 9999;
+      for (var i = 0; i < newGameMoves.length; i++) {
+        game.move(newGameMoves[i]);
+        let minimaxed = this.minimax(depth - 1, game, alpha, beta, !isMaximisingPlayer);
+        bestMove = Math.min(bestMove, minimaxed);
+        game.undo();
+        beta = Math.min(beta, bestMove);
+        if (beta <= alpha) {
+          return bestMove;
+        }
+      }
+      return bestMove;
+    }
+  }
+
+  evaluateBoard (game,board) {
     let totalEvaluation = 0;
-    for (var i = 0; i < 8; i++) {
-      for (var j = 0; j < 8; j++) {
-        totalEvaluation = totalEvaluation + this.getPieceValue(board[i][j], i ,j);
+    if (game.in_stalemate()) {
+      // console.log(`evaluateBoard found STALEMATE, returning 1000000`);
+      return 1000;
+    }
+    else {
+      for (var i = 0; i < 8; i++) {
+        for (var j = 0; j < 8; j++) {
+          totalEvaluation = totalEvaluation + this.getPieceValue(board[i][j], i ,j);
+        }
       }
     }
     return totalEvaluation;
@@ -151,61 +240,6 @@ class BaseChess {
       return 900 + ( isWhite ? kingEvalWhite[y][x] : kingEvalBlack[y][x] );
     }
     throw "Unknown piece type: " + piece.type;
-  }
-
-  minimaxRoot (depth, game, isMaximisingPlayer) {
-    var newGameMoves = game.moves();
-
-    var bestMove = -9999;
-    var bestMoveFound;
-
-    for(var i = 0; i < newGameMoves.length; i++) {
-      var newGameMove = newGameMoves[i]
-      game.move(newGameMove);
-      var value = this.minimax(depth - 1, game, -10000, 10000, !isMaximisingPlayer);
-      game.undo();
-      if(value >= bestMove) {
-        bestMove = value;
-        bestMoveFound = newGameMove;
-      }
-    }
-    return bestMoveFound;
-  }
-
-  minimax (depth, game, alpha, beta, isMaximisingPlayer) {
-    this.positionsExamined++;
-
-    if (depth === 0) {
-      return -this.evaluateBoard(game.board());
-    }
-
-    var newGameMoves = game.moves();
-
-    if (isMaximisingPlayer) {
-      var bestMove = -9999;
-      for (var i = 0; i < newGameMoves.length; i++) {
-        game.move(newGameMoves[i]);
-        bestMove = Math.max(bestMove, this.minimax(depth - 1, game, alpha, beta, !isMaximisingPlayer));
-        game.undo();
-        alpha = Math.max(alpha, bestMove);
-        if (beta <= alpha) {
-          return bestMove;
-        }
-      }
-      return bestMove;
-    } else {
-      var bestMove = 9999;
-      for (var i = 0; i < newGameMoves.length; i++) {
-        game.move(newGameMoves[i]);
-        bestMove = Math.min(bestMove, this.minimax(depth - 1, game, alpha, beta, !isMaximisingPlayer));
-        game.undo();
-        beta = Math.min(beta, bestMove);
-        if (beta <= alpha) {
-          return bestMove;
-        }
-      }
-      return bestMove;
-    }
   }
 
 }
