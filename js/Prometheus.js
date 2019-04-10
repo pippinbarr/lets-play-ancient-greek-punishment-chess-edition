@@ -4,14 +4,15 @@ class Prometheus extends BaseChess {
 
   constructor () {
     super (3);
+  }
 
+  setup (depth) {
+    super.setup(depth);
     this.game.load('rnbqkbnr/pppppppp/8/8/8/8/8/4K3 w KQkq - 0 1');
     this.board.position(this.game.fen(),false);
     let date = new Date();
     $('#header').html(`Prometheus vs. Zeus<br \>Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
   }
-
-
 
   moveBlack() {
     this.moves++;
@@ -33,10 +34,5 @@ class Prometheus extends BaseChess {
   resetGame() {
     $('#board').html('');
     this.setup(this.depth);
-
-    this.game.load('rnbqkbnr/pppppppp/8/8/8/8/8/4K3 w KQkq - 0 1');
-    this.board.position(this.game.fen(),false);
-    let date = new Date();
-    $('#header').html(`Prometheus vs. Zeus<br \>Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
   }
 }

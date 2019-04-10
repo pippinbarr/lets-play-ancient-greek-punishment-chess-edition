@@ -7,6 +7,7 @@ class BaseChess {
   }
 
   setup (depth) {
+    console.log("BaseChess setup",depth)
     let config = {
       draggable: false,
       position: 'start',

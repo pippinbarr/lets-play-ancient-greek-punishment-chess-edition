@@ -15,16 +15,16 @@ body {
 }
 
 #game {
-  width: 95vw;
+  width: 90vw;
 }
 
 #board {
-  width: 95vw;
+  width: 90vw;
 }
 
 #pgn {
   margin-top: 1em;
-  width: 95vw;
+  width: 90vw;
   font-size: 3em;
   overflow-y: scroll;
   height: 50vw;

@@ -8,6 +8,8 @@
 - ~~Think about how to make this a non-disgusting coding experience (OOP???)~~
 - ~~All games need SFX for movement, captures~~
 
+- Move SFX to Howler in case that gets it working better on mobile?
+
 ## Menu
 
 - ~~Frame it as matches between the punished and the god~~
@@ -26,6 +28,8 @@
 - ~~__I THINK I'VE DONE SOMETHING REASONABLE__ Handle stalemate in the move calculations (should avoid unless it's the only move?) (IT IS SURPRISINGLY EASY TO MAKE IT STALEMATE YOU. BOO.)~~
 - ~~Handle PGN (can be totally standard)~~
 - ~~Handle checkmate by restarting the game~~
+
+- Yes I should add a stalemate check even though it should never happen
 
 ## Zeno
 
@@ -49,8 +53,9 @@
 - ~~Improve styling of the king off the board (proper alignment etc.)~~
 - ~~Handle PGN (can be 100% standard)~~
 - ~~I broke the styling~~
+- ~~Handle black checkmates white~~
 
-- Handle black checkmates white
+- Yes I should add a stalemate check even though it should never happen
 
 ## Danaids
 
@@ -59,8 +64,9 @@
 - ~~PGN (need notation for placement of piece in new position)~~
 - ~~__STALEMATE CANNOT HAPPEN TO BLACK BECAUSE BLACK WILL ALWAYS HAVE PIECES__ Handle checkmate (and stalemate even though we think it shouldn't happen)~~
 - ~~__THERE WAS A BUG AND I FIXED IT__ Test black checkmated to make sure the king moves away~~
+- ~~Handle black checkmates white~~
 
-- Handle black checkmates white
+- Yes I should add a stalemate check even though it should never happen
 
 ## Mobile?
 

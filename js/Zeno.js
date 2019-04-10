@@ -4,6 +4,11 @@ class Zeno extends BaseChess {
 
   constructor () {
     super (2);
+  }
+
+  setup(depth) {
+    super.setup(depth);
+
     let date = new Date();
     $('#header').html(`Zeno vs. Archimedes<br \>Unknown location, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
 

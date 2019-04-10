@@ -4,12 +4,33 @@ class Danaids extends BaseChess {
 
   constructor () {
     super(3);
-    let date = new Date();
-    $('#header').html(`Danaids vs. Zeus<br \>Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
 
     // Here is a position with mate in one for white
     // this.game = new Chess('rnbqkbnr/ppppp2p/8/5pp1/8/5Q2/PPPPPPPP/RNB1KBNR w KQkq - 0 1');
     // this.board.position(this.game.fen());
+  }
+
+  setup (depth) {
+    super.setup(depth);
+    let date = new Date();
+    $('#header').html(`Danaids vs. Zeus<br \>Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
+  }
+
+  moveBlack() {
+    this.moves++;
+    let move = this.getBlackMove();
+    this.lastMove = this.game.move(move);
+    if (this.game.in_checkmate()) {
+      // No more interaction
+      $('.square-55d63').off('click');
+      this.updatePGN(this.lastMove,'Zeus wins');
+      this.board.position(this.game.fen(),true);
+      setTimeout(() => { this.resetGame() },5000);
+      return;
+    }
+
+    this.updatePGN(this.lastMove,'');
+    this.board.position(this.game.fen(),true);
   }
 
   moveWhite(from,to) {
@@ -105,4 +126,8 @@ class Danaids extends BaseChess {
     return undefined;
   }
 
+  resetGame() {
+    $('#board').html('');
+    this.setup(this.depth);
+  }
 }
