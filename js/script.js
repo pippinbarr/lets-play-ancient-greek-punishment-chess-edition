@@ -8,9 +8,13 @@ Pippin Barr
 ******************/
 
 // The sound effects
-let placeSFX = new Audio('assets/sounds/place.wav');
-let captureSFX = new Audio('assets/sounds/capture.wav');
-let slideSFX = new Audio('assets/sounds/slide.wav');
+let placeSFX = new Howl({
+  src: ['assets/sounds/place.wav']
+});
+let captureSFX = new Howl({
+  src: ['assets/sounds/capture.wav']
+});
+
 let months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
 $(document).ready(function () {

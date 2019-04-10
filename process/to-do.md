@@ -7,8 +7,7 @@
 - ~~__UH DUMMY, THEY ARE.__ Consider whether to implement the piece location tables (which aren't in their final example)~~
 - ~~Think about how to make this a non-disgusting coding experience (OOP???)~~
 - ~~All games need SFX for movement, captures~~
-
-- Move SFX to Howler in case that gets it working better on mobile?
+- ~~__IT DID__ Move SFX to Howler in case that gets it working better on mobile?~~
 
 ## Menu
 
@@ -71,8 +70,10 @@
 ## Mobile?
 
 - ~~__THEY ARE. IT'S STILL HELL.__ No reason why not? Are those libraries mobile compatible? I think they are?~~
+- ~~Keep going kid~~
+- Work on the sizing of the PGN section
+- The entire board flickers on every move which is: bad.
 
-- Keep going kid
 
 ## Release
 
