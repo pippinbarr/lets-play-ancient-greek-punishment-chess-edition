@@ -5,7 +5,7 @@ class Sisyphus extends BaseChess {
   constructor () {
     super (0);
     let date = new Date();
-    $('#header').text(`Sisyphus vs. Zeus, Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
+    $('#header').html(`Sisyphus vs. Zeus<br \>Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
   }
 
   moveWhite(from,to) {

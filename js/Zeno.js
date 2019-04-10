@@ -5,7 +5,7 @@ class Zeno extends BaseChess {
   constructor () {
     super (2);
     let date = new Date();
-    $('#header').text(`Sisyphus vs. Archimedes, Unknown location, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
+    $('#header').html(`Zeno vs. Archimedes<br \>Unknown location, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
 
     MathJax.Hub.Config({
       tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
@@ -144,7 +144,11 @@ class Zeno extends BaseChess {
     $newPGN.hide();
     $('#pgn').append($newPGN);
 
-    MathJax.Hub.Typeset($newPGN.get(),() => { $newPGN.show() });
+    MathJax.Hub.Typeset($newPGN.get(),() => {
+      $newPGN.show();
+      $('#pgn').scrollTop($('#pgn')[0].scrollHeight);
+    });
+
   }
 
 

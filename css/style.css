@@ -8,41 +8,111 @@ body {
   margin: 0;
   padding: 0;
   font-family: Times, serif;
+  overflow: hidden;
 }
 
 #wrapper {
-  /* margin: 10px; */
+}
+
+#game {
+  width: 95vw;
+}
+
+#board {
+  width: 95vw;
+}
+
+#pgn {
+  margin-top: 1em;
+  width: 95vw;
+  font-size: 3em;
+  overflow-y: scroll;
+  height: 50vw;
+  background-color: lightgrey;
 }
 
 #title {
-  font-size: 1.5em;
+  font-size: 3em;
   font-weight: bold;
   text-align: center;
   margin-bottom: 1em;
 }
 
-#menu {
-}
-
-.menu_button {
-  font-size: 1.2em;
+#header {
+  font-size: 3em;
+  font-weight: bold;
   text-align: center;
-  margin-bottom: 0.5em;
-  text-decoration: underline;
+  margin-bottom: 1em;
 }
 
 #game {
   margin: 0 auto;
   display: none;
+  border: none;
 }
 
-#header {
-  font-size: 1em;
-  font-weight: bold;
+@media only screen and (min-device-width: 768px) {
+
+  #title {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+
+  #header {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+
+  #game {
+    /* background-color: red; */
+    width: 400px;
+  }
+
+  #board {
+    width: 400px;
+  }
+
+  #pgn {
+    margin-top: 1em;
+    width: 400px;
+    font-size: 1.5em;
+    height: 200px;
+    overflow-y: scroll;
+    background-color: lightgrey;
+  }
+}
+
+
+#menu {
+}
+
+.menu_button {
+  font-size: 1.5em;
   text-align: center;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
+  text-decoration: underline;
 }
 
-#pgn {
-  font-size: 1.2em;
+#sisyphus {
+  text-decoration-color: #aaf;
+}
+
+#prometheus {
+  text-decoration-color: #faa;
+}
+
+#zeno {
+  text-decoration-color: #dad;
+}
+
+#danaids {
+  text-decoration-color: #dda;
+}
+
+#tantalus {
+  text-decoration-color: #ada;
 }

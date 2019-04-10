@@ -5,7 +5,7 @@ class Danaids extends BaseChess {
   constructor () {
     super(3);
     let date = new Date();
-    $('#header').text(`Danaids vs. Zeus, Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
+    $('#header').html(`Danaids vs. Zeus<br \>Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
 
     // Here is a position with mate in one for white
     // this.game = new Chess('rnbqkbnr/ppppp2p/8/5pp1/8/5Q2/PPPPPPPP/RNB1KBNR w KQkq - 0 1');

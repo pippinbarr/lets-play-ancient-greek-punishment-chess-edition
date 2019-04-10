@@ -30,7 +30,7 @@ class BaseChess {
   }
 
   updatePGN(move,note) {
-    console.log('Just inside update PGN: ' + note);
+    // console.log('Just inside update PGN: ' + note);
 
     if (move.color === 'w') {
       this.pgn += `${this.turn}. `;
@@ -45,7 +45,9 @@ class BaseChess {
     }
     $('#pgn').html(this.pgn);
 
-    console.log($('#pgn').html());
+    $('#pgn').scrollTop($('#pgn')[0].scrollHeight);
+
+    // console.log($('#pgn').html());
   }
 
   squareClicked(event) {
@@ -99,7 +101,7 @@ class BaseChess {
       promotion: 'q' // NOTE: always promote to a queen for example simplicity
     };
     this.lastMove = this.game.move(move);
-    this.updatePGN(this.lastMove);
+    this.updatePGN(this.lastMove,'');
 
     // Clear all highlights from the board (a new turn is about to begin)
     this.clearHighlights();

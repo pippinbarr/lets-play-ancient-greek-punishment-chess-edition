@@ -8,6 +8,6 @@ class Prometheus extends BaseChess {
     this.board.position(this.game.fen(),false);
 
     let date = new Date();
-    $('#header').text(`Prometheus vs. Zeus, Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
+    $('#header').html(`Prometheus vs. Zeus<br \>Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
   }
 }
