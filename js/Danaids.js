@@ -3,7 +3,7 @@
 class Danaids extends BaseChess {
 
   constructor () {
-    super(3);
+    super(1);
     let date = new Date();
     $('#header').text(`Danaids vs. Zeus, Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
 
@@ -21,44 +21,22 @@ class Danaids extends BaseChess {
     // Update the board based on the new position
     this.board.position(this.game.fen(),true);
 
-    if (this.lastMove.captured != undefined) {
-      let type = this.lastMove.captured;
-      let piece = $(`.square-${to}`).find(`piece-417db`);
-      let cols = "abcdefgh";
-      let col = 0;
-      let row = 0;
-      let position = this.board.position();
-      let respawnSquare = undefined;
-      for (let row = 8; row >= 1; row--) {
-        for (let col = 0; col < cols.length; col++) {
-          let square = `${cols.charAt(col)}${row}`;
-          console.log(square,position[square]);
-          if (position[square] === undefined) {
-            console.log("Using " + respawnSquare);
-            respawnSquare = square;
-            break;
-          }
-        }
-        if (respawnSquare !== undefined) {
-          break;
-        }
-      }
-      // Once here we've found the square to respawn, so put it there
-      position[respawnSquare] = `b${type.toUpperCase()}`;
-      this.board.position(position,true);
-      let boardFEN = this.board.fen().split(' ');
-      let gameFEN = this.game.fen().split(' ');
-      gameFEN[0] = boardFEN[0];
-      gameFEN = gameFEN.join(' ');
-      this.game.load(gameFEN);
+    let note = '';
 
-      let captured = this.lastMove.captured.toUpperCase();
-      let note = `${captured}→${respawnSquare}`;
-      this.updatePGN(this.lastMove,`${note}`);
+    console.log(note);
+
+    if (this.lastMove.captured != undefined) {
+      note += this.handleCapture();
     }
-    else {
-      this.updatePGN(this.lastMove);
+
+    // Need to handle checkmate separately since the last move could have been a capture
+    // that yielded checkmate!
+    if (this.game.in_checkmate()) {
+      note += this.handleCheckmate();
     }
+
+    this.updatePGN(this.lastMove,note);
+
 
     // Clear all highlights from the board (a new turn is about to begin)
     this.clearHighlights();
@@ -69,6 +47,42 @@ class Danaids extends BaseChess {
     setTimeout(() => {
       this.moveBlack();
     },500);
+  }
+
+  handleCapture() {
+    let type = this.lastMove.captured;
+    console.log(this.lastMove);
+    let square = this.placeInFirstEmpty({type: this.lastMove.captured, color: 'b'});
+    let note = `${type.toUpperCase()}→${square}`;
+    return note;
+  }
+
+  handleCheckmate() {
+    let square = this.placeInFirstEmpty({type: 'k', color: 'b'});
+    let note = `K->${square}`;
+    return note;
+  }
+
+  placeInFirstEmpty(piece) {
+    let cols = "abcdefgh";
+    let position = this.board.position();
+    console.log(position);
+    for (let row = 8; row >= 1; row--) {
+      for (let col = 0; col < cols.length; col++) {
+        let square = `${cols.charAt(col)}${row}`;
+        if (position[square] !== undefined) continue;
+        let placed = this.game.put(piece,square);
+        if (placed && !this.game.in_checkmate()) {
+          this.board.position(this.game.fen());
+          return square;
+        }
+        else {
+          this.game.remove(square);
+        }
+      }
+    }
+    console.log("IT WOULD BE BAD TO SEE THIS!");
+    return undefined;
   }
 
 }

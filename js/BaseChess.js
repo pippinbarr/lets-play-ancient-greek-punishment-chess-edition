@@ -30,11 +30,13 @@ class BaseChess {
   }
 
   updatePGN(move,note) {
+    console.log('Just inside update PGN: ' + note);
+
     if (move.color === 'w') {
       this.pgn += `${this.turn}. `;
     }
     this.pgn += `${move.san} `;
-    if (note !== undefined) {
+    if (note !== '') {
       this.pgn += `(${note}) `;
     }
     if (move.color === 'b') {
@@ -121,14 +123,20 @@ class BaseChess {
     $('.square-'+square).addClass(`highlight1-32417`);
   }
 
+  moveBlack() {
+    this.moves++;
+    let move = this.getBlackMove();
+    this.lastMove = this.game.move(move);
+    this.updatePGN(this.lastMove,'');
+    this.board.position(this.game.fen(),true);
+  }
+
   getBlackMove() {
     this.positionsExamined = 0;
     let move = this.minimaxRoot(this.depth,this.game,true)
     // console.log(`Examined ${this.positionsExamined} positions.`);
     return move;
   }
-
-
 
   minimaxRoot (depth, game, isMaximisingPlayer) {
     var newGameMoves = game.moves();

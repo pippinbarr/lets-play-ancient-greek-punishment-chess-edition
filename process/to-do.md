@@ -12,7 +12,7 @@
 
 - ~~Frame it as matches between the punished and the god~~
 
-- Have interstitial information that frames that encounter (look at some chess references)
+- Have interstitial information that frames that encounter? (look at some chess references)
 
 ## Sisyphus
 
@@ -26,7 +26,7 @@
 - ~~__I THINK I'VE DONE SOMETHING REASONABLE__ Handle stalemate in the move calculations (should avoid unless it's the only move?) (IT IS SURPRISINGLY EASY TO MAKE IT STALEMATE YOU. BOO.)~~
 - ~~Handle PGN (can be totally standard)~~
 
-- Handle checkmate (and stalemate even though we think it should happen)
+- Handle checkmate
 
 
 ## Zeno
@@ -36,9 +36,8 @@
 
 - Work on how it looks (does it look too weird when black pieces overlap the square that the Zeno piece is trying to get to?)
 - Implement PGN esp. here since it will help a huge amount to clarify  what's going on? Particularly  at tinier amounts of distance. (Maybe once the distance hits 1px we stop "animating" to avoid weirdness)
-- Handle checkmate (notably we may need black to capture white's king since white is both helpless and could have a king move once the game gets going)
+- Handle checkmate (notably we may need black to capture white's king since white is both helpless and could have a king move once the game gets going - but ACTUALLY no because any check would simply be checkmate as white's pieces can't move. Hah.)
 - How will PGN work for movement between columns?
-
 
 ## Tantalus
 
@@ -52,7 +51,7 @@
 - ~~Improve styling of the king off the board (proper alignment etc.)~~
 - ~~Handle PGN (can be 100% standard)~~
 
-- Handle checkmate (and stalemate even though we think it shouldn't happen)
+- Handle black checkmates white
 - I broke the styling
 
 ## Danaids
@@ -60,9 +59,10 @@
 - ~~__JUST A SIMPLE RESPAWN ACTUALLY LOOKS QUITE GOOD, NO PARTICULAR NEED TO ANIMATE IN FANCY WAYS?__ Get a basic version of respawning pieces when captured going~~
 - ~~__I WAS AND NOW IT IS FIXED__ Am I seeing some weird behaviour in terms of placement?~~
 - ~~PGN (need notation for placement of piece in new position)~~
+- ~~__STALEMATE CANNOT HAPPEN TO BLACK BECAUSE BLACK WILL ALWAYS HAVE PIECES__ Handle checkmate (and stalemate even though we think it shouldn't happen)~~
 
-- Handle checkmate (and stalemate even though we think it shouldn't happen)
-
+- Test black checkmated to make sure the king moves away
+- Handle black checkmates white
 
 ## Mobile?
 
