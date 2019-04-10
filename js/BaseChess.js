@@ -44,6 +44,8 @@ class BaseChess {
       this.turn++;
     }
     $('#pgn').html(this.pgn);
+
+    console.log($('#pgn').html());
   }
 
   squareClicked(event) {

@@ -7,6 +7,11 @@ class Zeno extends BaseChess {
     let date = new Date();
     $('#header').text(`Sisyphus vs. Archimedes, Unknown location, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
 
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      processSectionDelay: 0,
+      messageStyle: "none"
+    });
   }
 
   moveWhite(from,to) {
@@ -22,23 +27,31 @@ class Zeno extends BaseChess {
     this.piece = $(`.square-${from}`).find(`.piece-417db`).clone(true).appendTo('body');
     $('body').append(this.piece);
 
+    // Set the css of our new piece image to be in the original piece's place
     this.piece.css({
       position: 'absolute',
       top: this.originalPiece.offset().top,
       left: this.originalPiece.offset().left
-    })
-    this.piece.css({
-      backgroundColor: 'red'
-    })
+    });
 
+    // Remember the destination square (in jquery)
     this.destination = $(`.square-${to}`);
-    this.destination.css({
-      backgroundColor: 'green'
-    })
+
+    // Remember the location of the destinatino square in pixels
     this.destinationX = this.destination.offset().left;
     this.destinationY = this.destination.offset().top;
 
-    // Remove the piece from the board representation (and the game)
+    this.startFile = from.charAt(0);
+    this.startRank = parseInt(from.charAt(1));
+
+    this.currentRank = this.startRank;
+
+    this.destFile = to.charAt(0);
+    this.destRank = parseInt(to.charAt(1));
+
+    this.count = 1;
+
+    // Remove the original from the board representation (and the game)
     this.game.remove(from);
     this.board.position(this.game.fen());
 
@@ -61,25 +74,46 @@ class Zeno extends BaseChess {
     this.moves++;
     let move = this.getBlackMove();
     this.lastMove = this.game.move(move);
-    this.updatePGN(this.lastMove);
+    this.updatePGN(this.lastMove,'');
+
     this.board.position(this.game.fen(),true);
 
     setTimeout(() => { this.zenoMoveWhite(); }, 500);
   }
 
   zenoMoveWhite () {
-
+    // Calculate the distance and the corresponding target
     this.dx = (this.destinationX - this.piece.offset().left) /  2;
     this.dy = (this.destinationY - this.piece.offset().top) /  2;
     this.targetX = this.piece.offset().left + this.dx;
     this.targetY = this.piece.offset().top + this.dy;
     console.log(this.targetX,this.targetY);
 
+    let file;
+    if (this.startFile === this.destFile) {
+      file = this.startFile;
+    }
+    else if (this.startFile > this.destFile) {
+      file = `$ \({${this.destFile} + {{${this.startFile} - ${this.destFile}} \\over {2^{${this.count}}}}\)}$`
+    }
+    else {
+      file = `$ \({${this.destFile} - {{${this.destFile} - ${this.startFile}} \\over {2^{${this.count}}}}}\)$`
+    }
+
+    let rank = `$\(${this.destRank} - {1 \\over {2^{${this.count}}}}\)$`;
+
+    let test = Math.pow(2,this.count);
+    this.moveExpression = `${file}${rank}`;
+
     let move = {
-      san: 'beep',
+      san: `${this.moveExpression}`,
       color: 'w'
     };
-    this.updatePGN(move);
+
+    this.updatePGN(move,'');
+    // MathJax.Hub.Queue(["Typeset",MathJax.Hub,'pgn']);
+
+    this.count++;
 
     this.piece.animate({
       top: `${this.targetY}px`,
@@ -89,4 +123,29 @@ class Zeno extends BaseChess {
       setTimeout(() => { this.zenoMoveBlack(); }, 500);
     });
   }
+
+  updatePGN(move,note) {
+    let pgn = '';
+
+    if (move.color === 'w') {
+      pgn += `${this.turn}. `;
+    }
+    pgn += `${move.san} `;
+    if (note !== '') {
+      pgn += `(${note}) `;
+    }
+    if (move.color === 'b') {
+      pgn += `<br />`;
+      this.turn++;
+    }
+
+    let $newPGN = $(`<span>${pgn}</span>`);
+    $newPGN.attr('id',`move${this.turn}${move.color}`);
+    $newPGN.hide();
+    $('#pgn').append($newPGN);
+
+    MathJax.Hub.Typeset($newPGN.get(),() => { $newPGN.show() });
+  }
+
+
 }
