@@ -15,7 +15,6 @@ class Zeno extends BaseChess {
   }
 
   moveWhite(from,to) {
-
     // Disable all future interaction for white
     $('.square-55d63').off('click');
 
@@ -74,11 +73,21 @@ class Zeno extends BaseChess {
     this.moves++;
     let move = this.getBlackMove();
     this.lastMove = this.game.move(move);
-    this.updatePGN(this.lastMove,'');
+    if (this.game.in_check()) {
+      // Check in this mode means game over!
+      console.log("CHECKMATE!");
+      this.lastMove.san = this.lastMove.san.replace('+','#');
+      this.updatePGN(this.lastMove,'Archimedes wins');
+      this.board.position(this.game.fen(),true);
+      setTimeout(() => { this.resetGame(); }, 2000);
+      return;
+    }
 
+    this.updatePGN(this.lastMove,'');
     this.board.position(this.game.fen(),true);
 
-    setTimeout(() => { this.zenoMoveWhite(); }, 500);
+
+    setTimeout(() => { this.zenoMoveWhite(); }, this.MOVE_SPEED);
   }
 
   zenoMoveWhite () {
@@ -151,5 +160,9 @@ class Zeno extends BaseChess {
 
   }
 
-
+  resetGame() {
+    $('#board').html('');
+    this.piece.remove();
+    this.setup(this.depth);
+  }
 }

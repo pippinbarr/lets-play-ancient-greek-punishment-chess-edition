@@ -28,7 +28,7 @@ body {
   font-size: 3em;
   overflow-y: scroll;
   height: 50vw;
-  background-color: lightgrey;
+  border: 1px solid grey;
 }
 
 #title {
@@ -82,7 +82,7 @@ body {
     font-size: 1.5em;
     height: 200px;
     overflow-y: scroll;
-    background-color: lightgrey;
+    border: 1px solid grey;
   }
 }
 

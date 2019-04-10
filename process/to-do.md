@@ -26,18 +26,18 @@
 - ~~__I THINK I'VE DONE SOMETHING REASONABLE__ Handle stalemate in the move calculations (should avoid unless it's the only move?) (IT IS SURPRISINGLY EASY TO MAKE IT STALEMATE YOU. BOO.)~~
 - ~~Handle PGN (can be totally standard)~~
 
-- Handle checkmate
+- Handle checkmate by restarting the game
 
 
 ## Zeno
 
 - ~~Handle piece animation outside chessboard.js (remove the piece from the board once they move it so that the game doesn't think about it - what about e3? Doesn't matter as no response could cause a problem?)~~
 - ~~__NOT SURE WHAT THAT WAS, BUT SEEMS OK NOW__ Why does it seem like the AI grinds to a halt in this version???~~
-
-- Work on how it looks (does it look too weird when black pieces overlap the square that the Zeno piece is trying to get to?)
-- Implement PGN esp. here since it will help a huge amount to clarify  what's going on? Particularly  at tinier amounts of distance. (Maybe once the distance hits 1px we stop "animating" to avoid weirdness)
-- Handle checkmate (notably we may need black to capture white's king since white is both helpless and could have a king move once the game gets going - but ACTUALLY no because any check would simply be checkmate as white's pieces can't move. Hah.)
-- How will PGN work for movement between columns?
+- ~~Work on how it looks (does it look too weird when black pieces overlap the square that the Zeno piece is trying to get to?)~~
+- ~~Implement PGN esp. here since it will help a huge amount to clarify  what's going on? Particularly  at tinier amounts of distance. (Maybe once the distance hits 1px we stop "animating" to avoid weirdness)~~
+- ~~__MATHEMATICS MY FRIEND!__ How will PGN work for movement between columns?~~
+- ~~Handle checkmate (notably we may need black to capture white's king since white is both helpless and could have a king move once the game gets going - but ACTUALLY no because any check would simply be checkmate as white's pieces can't move. Hah.)~~
+- ~~Restart game on checkmate~~
 
 ## Tantalus
 
@@ -50,9 +50,9 @@
 - ~~__I AM A PROGRAMMING GOD__ Fix chess.js to deal with the situation where black has no king~~
 - ~~Improve styling of the king off the board (proper alignment etc.)~~
 - ~~Handle PGN (can be 100% standard)~~
+- ~~I broke the styling~~
 
 - Handle black checkmates white
-- I broke the styling
 
 ## Danaids
 
@@ -66,7 +66,9 @@
 
 ## Mobile?
 
-- No reason why not? Are those libraries mobile compatible? I think they are?
+- ~~__THEY ARE. IT'S STILL HELL.__ No reason why not? Are those libraries mobile compatible? I think they are?~~
+
+- Keep going kid
 
 ## Release
 

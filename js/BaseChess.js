@@ -3,6 +3,10 @@
 class BaseChess {
 
   constructor (depth) {
+    this.setup(depth);
+  }
+
+  setup (depth) {
     let config = {
       draggable: false,
       position: 'start',
@@ -25,8 +29,14 @@ class BaseChess {
     this.depth = depth;
     this.positionsExamined = 0;
     this.lastMove = null;
-    this.pgn = ``;
+    this.pgn = '';
+    $('#pgn').html(this.pgn);
     this.turn = 1;
+    this.MOVE_SPEED = 100;
+
+    $('.square-55d63').on('click', (event) => {
+      this.squareClicked(event);
+    });
   }
 
   updatePGN(move,note) {
