@@ -60,8 +60,8 @@
 - ~~__I WAS AND NOW IT IS FIXED__ Am I seeing some weird behaviour in terms of placement?~~
 - ~~PGN (need notation for placement of piece in new position)~~
 - ~~__STALEMATE CANNOT HAPPEN TO BLACK BECAUSE BLACK WILL ALWAYS HAVE PIECES__ Handle checkmate (and stalemate even though we think it shouldn't happen)~~
+- ~~__THERE WAS A BUG AND I FIXED IT__ Test black checkmated to make sure the king moves away~~
 
-- Test black checkmated to make sure the king moves away
 - Handle black checkmates white
 
 ## Mobile?
