@@ -25,9 +25,7 @@
 - ~~Remove all white pieces except king and let the game run normally~~
 - ~~__I THINK I'VE DONE SOMETHING REASONABLE__ Handle stalemate in the move calculations (should avoid unless it's the only move?) (IT IS SURPRISINGLY EASY TO MAKE IT STALEMATE YOU. BOO.)~~
 - ~~Handle PGN (can be totally standard)~~
-
-- Handle checkmate by restarting the game
-
+- ~~Handle checkmate by restarting the game~~
 
 ## Zeno
 
