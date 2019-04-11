@@ -12,6 +12,7 @@
 ## Menu
 
 - ~~Frame it as matches between the punished and the god~~
+- ~~Add logo~~
 
 - Have interstitial information that frames that encounter? (look at some chess references)
 
@@ -71,8 +72,12 @@
 
 - ~~__THEY ARE. IT'S STILL HELL.__ No reason why not? Are those libraries mobile compatible? I think they are?~~
 - ~~Keep going kid~~
-- Work on the sizing of the PGN section
-- The entire board flickers on every move which is: bad.
+- ~~Work on the sizing of the PGN section~~
+- ~~__LOOKS LIKE IT WAS A LOCAL HOST THING__ The entire board flickers on every move which is: bad. Might just be a local hosting thing though.~~
+
+## Test
+
+- Send to J+M and Jonathan and...?
 
 
 ## Release

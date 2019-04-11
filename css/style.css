@@ -27,12 +27,13 @@ body {
   width: 90vw;
   font-size: 3em;
   overflow-y: scroll;
-  height: 50vw;
+  height: 20vw;
   border: 1px solid grey;
 }
 
 #title {
-  font-size: 3em;
+  margin-top: 1em;
+  font-size: 4em;
   font-weight: bold;
   text-align: center;
   margin-bottom: 1em;
@@ -51,9 +52,27 @@ body {
   border: none;
 }
 
+.menu_button {
+  font-size: 3em;
+  text-align: center;
+  margin-bottom: 0.5em;
+  text-decoration: underline;
+}
+
+#logo {
+  margin-top: 3em;
+  text-align: center;
+}
+
+#logo img {
+
+}
+
+
 @media only screen and (min-device-width: 768px) {
 
   #title {
+    margin-top: 1em;
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
@@ -80,22 +99,29 @@ body {
     margin-top: 1em;
     width: 400px;
     font-size: 1.5em;
-    height: 200px;
+    height: 100px;
     overflow-y: scroll;
     border: 1px solid grey;
   }
+
+  .menu_button {
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 0.5em;
+    text-decoration: underline;
+  }
+
+  #logo img {
+    max-width: 50px;
+    text-align: center;
+  }
+
 }
 
 
 #menu {
 }
 
-.menu_button {
-  font-size: 1.5em;
-  text-align: center;
-  margin-bottom: 0.5em;
-  text-decoration: underline;
-}
 
 #sisyphus {
   text-decoration-color: #aaf;

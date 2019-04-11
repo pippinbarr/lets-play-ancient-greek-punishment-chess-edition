@@ -51,7 +51,7 @@ class BaseChess {
       this.pgn += `(${note}) `;
     }
     if (move.color === 'b') {
-      this.pgn += `<br />`;
+      this.pgn += ` `;
       this.turn++;
     }
     $('#pgn').html(this.pgn);

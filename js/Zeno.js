@@ -149,7 +149,7 @@ class Zeno extends BaseChess {
       pgn += `(${note}) `;
     }
     if (move.color === 'b') {
-      pgn += `<br />`;
+      pgn += ` `;
       this.turn++;
     }
 
