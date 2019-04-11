@@ -11,7 +11,14 @@ class Prometheus extends BaseChess {
     this.game.load('rnbqkbnr/pppppppp/8/8/8/8/8/4K3 w KQkq - 0 1');
     this.board.position(this.game.fen(),false);
     let date = new Date();
-    $('#header').html(`Prometheus vs. Zeus<br \>Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
+
+    if (this.gameNumber === undefined) this.gameNumber = 1;
+    let winNote = '';
+    if (this.gameNumber === 2) winNote = ` (Zeus leads by ${this.gameNumber - 1} game)`;
+    else if (this.gameNumber > 2) winNote = ` (Zeus leads by ${this.gameNumber - 1} games)`;
+
+    $('#header').html(`Prometheus vs. Zeus`)
+    $('#sub-header').html(`Game #${this.gameNumber}${winNote}<br \>Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
   }
 
   moveBlack() {
@@ -19,7 +26,8 @@ class Prometheus extends BaseChess {
     let move = this.getBlackMove();
     this.lastMove = this.game.move(move);
     if (this.game.in_checkmate() || this.game.in_stalemate()) {
-      let note = 'Stalemate';
+      let note = 'Zeus wins';
+      this.lastMove.san += ' 0-1';
       // No more interaction
       $('.square-55d63').off('click');
       this.updatePGN(this.lastMove,note);
@@ -34,6 +42,7 @@ class Prometheus extends BaseChess {
 
   resetGame() {
     $('#board').html('');
+    this.gameNumber++;
     this.setup(this.depth);
   }
 }

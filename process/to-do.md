@@ -18,7 +18,7 @@
 
 ## Header
 
-- Track wins and losses?
+- ~~Track wins and losses?~~
 
 ## Sisyphus
 

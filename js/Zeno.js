@@ -10,7 +10,13 @@ class Zeno extends BaseChess {
     super.setup(depth);
 
     let date = new Date();
-    $('#header').html(`Zeno vs. Archimedes<br \>Unknown location, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
+    if (this.gameNumber === undefined) this.gameNumber = 10;
+    let winNote = '';
+    if (this.gameNumber === 2) winNote = ` (Archimedes leads by ${this.gameNumber - 1} game)`;
+    else if (this.gameNumber > 2) winNote = ` (Archimedes leads by ${this.gameNumber - 1} games)`;
+
+    $('#header').html(`Zeno vs. Archimedes`)
+    $('#sub-header').html(`Game #${this.gameNumber}${winNote}<br \>Unknown location, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
 
     MathJax.Hub.Config({
       tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
@@ -79,10 +85,11 @@ class Zeno extends BaseChess {
     let move = this.getBlackMove();
     this.lastMove = this.game.move(move);
     if (this.game.in_check()) {
+      let note = 'Archimedes wins';
       // Check in this mode means game over!
-      console.log("CHECKMATE!");
       this.lastMove.san = this.lastMove.san.replace('+','#');
-      this.updatePGN(this.lastMove,'Archimedes wins');
+      this.lastMove.san += ' 0-1';
+      this.updatePGN(this.lastMove,note);
       this.board.position(this.game.fen(),true);
       setTimeout(() => { this.resetGame(); }, 2000);
       return;
@@ -168,6 +175,7 @@ class Zeno extends BaseChess {
   resetGame() {
     $('#board').html('');
     this.piece.remove();
+    this.gameNumber++;
     this.setup(this.depth);
   }
 }

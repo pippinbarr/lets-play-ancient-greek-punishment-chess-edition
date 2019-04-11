@@ -13,7 +13,14 @@ class Danaids extends BaseChess {
   setup (depth) {
     super.setup(depth);
     let date = new Date();
-    $('#header').html(`Danaids vs. Zeus<br \>Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
+    if (this.gameNumber === undefined) this.gameNumber = 1;
+    let winNote = '';
+    if (this.gameNumber === 2) winNote = ` (Zeus leads by ${this.gameNumber - 1} game)`;
+    else if (this.gameNumber > 2) winNote = ` (Zeus leads by ${this.gameNumber - 1} games)`;
+
+    $('#header').html(`Danaids vs. Zeus`)
+    $('#sub-header').html(`Game #${this.gameNumber}${winNote}<br \>Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
+
   }
 
   moveBlack() {
@@ -21,7 +28,8 @@ class Danaids extends BaseChess {
     let move = this.getBlackMove();
     this.lastMove = this.game.move(move);
     if (this.game.in_checkmate() || this.game.in_stalemate()) {
-      let note = 'Stalemate';
+      let note = 'Zeus wins';
+      this.lastMove.san += ' 0-1';
       // No more interaction
       $('.square-55d63').off('click');
       this.updatePGN(this.lastMove,note);
@@ -129,6 +137,7 @@ class Danaids extends BaseChess {
 
   resetGame() {
     $('#board').html('');
+    this.gameNumber++;
     this.setup(this.depth);
   }
 }
