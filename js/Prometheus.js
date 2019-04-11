@@ -18,10 +18,11 @@ class Prometheus extends BaseChess {
     this.moves++;
     let move = this.getBlackMove();
     this.lastMove = this.game.move(move);
-    if (this.game.in_checkmate()) {
+    if (this.game.in_checkmate() || this.game.in_stalemate()) {
+      let note = 'Stalemate';
       // No more interaction
       $('.square-55d63').off('click');
-      this.updatePGN(this.lastMove,'Zeus wins');
+      this.updatePGN(this.lastMove,note);
       this.board.position(this.game.fen(),true);
       setTimeout(() => { this.resetGame() },5000);
       return;
