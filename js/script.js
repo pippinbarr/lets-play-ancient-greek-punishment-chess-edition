@@ -27,36 +27,42 @@ $(document).ready(function () {
 function menuButtonClicked() {
   let level = $(this).attr('id');
   let chess;
+  let GameClass;
+
   switch(level) {
     case 'sisyphus':
-    chess = new Sisyphus();
+    GameClass = Sisyphus;
     break;
 
     case 'prometheus':
-    chess = new Prometheus();
+    GameClass = Prometheus;
     break;
 
     case 'tantalus':
-    chess = new Tantalus();
+    GameClass = Tantalus;
     break;
 
     case 'zeno':
-    chess = new Zeno();
+    GameClass = Zeno;
     break;
 
     case 'danaids':
-    chess = new Danaids();
+    GameClass = Danaids;
     break;
 
     case 'chess':
-    chess = new BaseChess(2);
+    GameClass = BaseChess;
     break;
   }
 
-  if (!chess) {
-    console.log("Error! Menu click broke!");
-  }
-
-  $('#menu').hide();
-  $('#game').show();
+  $('#menu').fadeOut(1000,() => {
+    $(`#${level}-interstitial`).fadeIn(1000,() => {
+      setTimeout(() => {
+        $(`#${level}-interstitial`).fadeOut(1000,() => {
+          chess = new GameClass();
+          $('#game').fadeIn(500);
+        });
+      },3000);
+    })
+  });
 }

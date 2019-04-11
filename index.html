@@ -6,7 +6,7 @@
 
   <!-- CSS stylesheet(s) -->
   <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <link rel="stylesheet" href="css/chessboard-0.3.0.css" />
+  <link rel="stylesheet" href="css/chessboard-0.3.0.min.css" />
 
   <!-- Libraries -->
   <script
@@ -17,7 +17,7 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
   <script src="js/libraries/howler.min.js"></script>
-  <script src="js/libraries/chess.js"></script>
+  <script src="js/libraries/chess.min.js"></script>
   <script src="js/libraries/chessboard-0.3.0.min.js"></script>
 
   <!-- My script(s) -->
@@ -58,14 +58,71 @@
       <div id="logo">
         <a href="https://www.pippinbarr.com/"><img src="assets/images/clown_logo.png"></a>
       </div>
-  </div>
+    </div>
 
-  <div id="game">
-    <div id="header"></div>
-    <div id="sub-header"></div>
-    <div id="board"></div>
-    <div id="pgn"></div>
+    <div id="interstitials">
+      <div id="sisyphus-interstitial" class="nodisplay">
+        <div class="quote">
+          Every time Sisyphus, by the greatest of exertion and toil, attained the summit, the darn thing rolled back down again.
+        </div>
+        <div class="credit">
+          <a href="http://www.mythweb.com/encyc/entries/sisyphus.html">Encyclopedia of Greek Mythology</a>
+        </div>
+      </div>
+      <div id="tantalus-interstitial" class="nodisplay">
+        <div class="quote">
+          Overhanging the pool were boughs laden with luscious fruit. But each time Tantalus stretched to pluck this juicy sustenance, the boughs receded from his grasp.
+        </div>
+        <div class="credit">
+          <a href="http://www.mythweb.com/encyc/entries/tantalus.html">Encyclopedia of Greek Mythology</a>
+        </div>
+      </div>
+      <div id="prometheus-interstitial" class="nodisplay">
+        <div class="quote">
+          Zeus chained Prometheus to a rock where each day an eagle pecked out his liver (which regenerated itself each night).
+        </div>
+        <div class="credit">
+          <a href="http://www.mythweb.com/encyc/entries/prometheus.html">Encyclopedia of Greek Mythology</a>
+        </div>
+        <!--
+        <div class="quote">
+        The hound of Zeus, the tawny eagle,<br />
+        Shall violently fall upon thy flesh<br />
+        And rend it as 'twere rags; and every day <br />
+        And all day long shall thine unbidden guest <br />
+        Sit at thy table, feasting on thy liver <br />
+        Till he hath gnawn it black.
+      </div>
+      <div class="credit">
+      <a href="http://classics.mit.edu/Aeschylus/prometheus.html">Encyclopedia of Greek Mythology</a>
+    </div>
+  -->
+</div>
+<div id="danaids-interstitial" class="nodisplay">
+  <div class="quote">
+    They were condemned to an afterlife of unending labor, carrying water from the Styx in leaky jars.
   </div>
+  <div class="credit">
+    <a href="http://www.mythweb.com/encyc/entries/danaides.html">Encyclopedia of Greek Mythology</a>
+  </div>
+</div>
+<div id="zeno-interstitial" class="nodisplay">
+  <div class="quote">
+    "That which is in locomotion must arrive at the half-way stage before it arrives at the goal."
+  </div>
+  <div class="credit">
+    Aristotle, Physics VI:9 (via <a href="https://en.wikipedia.org/wiki/Zeno%27s_paradoxes">Wikipedia</a>)
+  </div>
+</div>
+
+</div>
+
+<div id="game">
+  <div id="header"></div>
+  <div id="sub-header"></div>
+  <div id="board"></div>
+  <div id="pgn"></div>
+</div>
 </div>
 </body>
 

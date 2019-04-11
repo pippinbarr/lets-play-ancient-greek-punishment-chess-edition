@@ -185,3 +185,11 @@ OR I allow black to capture the king. As I think about it, I'd rather avoid this
 Though this also speaks to Danaids, in which I don't really want the Danaid to checkmate black (doesn't make sense to win), and so one funny response is you get checkmate, capture the king, and on you go? But then that's the same weirdness.
 
 Perhaps when you checkmate the king is just moves to another square elsewhere (not in check obviously), similarly sliding through your fingers like water. I think I could live with that...
+
+---
+
+# ()
+
+
+
+![](images/prometheus-vs-zeus.png)

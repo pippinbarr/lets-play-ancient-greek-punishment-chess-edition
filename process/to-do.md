@@ -14,7 +14,7 @@
 - ~~Frame it as matches between the punished and the god~~
 - ~~Add logo~~
 
-- Have interstitial information that frames that encounter? (look at some chess references)
+- ~~Have interstitial information that frames that encounter? (look at some chess references)~~
 
 ## Header
 
@@ -33,6 +33,8 @@
 - ~~Handle PGN (can be totally standard)~~
 - ~~Handle checkmate by restarting the game~~
 - ~~Yes I should add a stalemate check even though it should never happen~~
+
+- Change over so that white can't move, only does a little struggle animation (how would you notate this? Maybe just Ke1 over and over? Hehe.)
 
 ## Zeno
 
@@ -84,3 +86,5 @@
 ## Release
 
 ## Bugs
+
+- The margin at the top is really irritating and my css sucks
