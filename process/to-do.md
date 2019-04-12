@@ -34,8 +34,7 @@
 - ~~Handle PGN (can be totally standard)~~
 - ~~Handle checkmate by restarting the game~~
 - ~~Yes I should add a stalemate check even though it should never happen~~
-
-- Change over so that white can't move, only does a little struggle animation (how would you notate this? Maybe just Ke1 over and over? Hehe.)
+- ~~Change over so that white can't move, only does a little struggle animation (how would you notate this? Maybe just Ke1 over and over? Hehe.)~~
 
 ## Zeno
 

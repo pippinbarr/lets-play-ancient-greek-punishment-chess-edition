@@ -17,8 +17,8 @@ let captureSFX = new Howl({
 
 let months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
-let FADE_TIME =  500;
-let QUOTE_TIME = 3000;
+let FADE_TIME =  1;
+let QUOTE_TIME = 1;
 
 $(document).ready(function () {
 
