@@ -8,17 +8,17 @@ Pippin Barr
 ******************/
 
 // The sound effects
-let placeSFX = new Howl({
+const placeSFX = new Howl({
   src: ['assets/sounds/place.wav']
 });
-let captureSFX = new Howl({
+const captureSFX = new Howl({
   src: ['assets/sounds/capture.wav']
 });
 
-let months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
-let FADE_TIME =  1;
-let QUOTE_TIME = 1;
+const FADE_TIME =  500;
+const QUOTE_TIME = 3000;
 
 $(document).ready(function () {
 
