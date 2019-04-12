@@ -10,7 +10,7 @@ class Zeno extends BaseChess {
     super.setup(depth);
 
     let date = new Date();
-    if (this.gameNumber === undefined) this.gameNumber = 10;
+    if (this.gameNumber === undefined) this.gameNumber = 1;
     let winNote = '';
     if (this.gameNumber === 2) winNote = ` (Archimedes leads by ${this.gameNumber - 1} game)`;
     else if (this.gameNumber > 2) winNote = ` (Archimedes leads by ${this.gameNumber - 1} games)`;

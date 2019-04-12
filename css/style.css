@@ -14,50 +14,49 @@ body {
   padding: 0 !important;
   font-family: Times, serif;
   overflow: hidden;
+  background-color: rgb(240,240,240);
+  text-align: center;
+}
+
+#main {
+  margin: 0;
+  width: 100%;
+}
+
+.nodisplay {
+  display: none;
 }
 
 #wrapper {
-  /* position: absolute; */
-  margin: 0;
+  text-align: center;
+  margin: 0 auto;
   padding: 0;
-}
-
-#game {
-  width: 90vw;
-}
-
-#board {
-  width: 90vw;
-}
-
-#pgn {
-  margin-top: 1em;
-  width: 90vw;
-  font-size: 3em;
-  overflow-y: scroll;
-  height: 20vw;
-  border: 1px solid grey;
+  background-color: white;
 }
 
 #title {
-  margin-top: 1em;
-  font-size: 4em;
   font-weight: bold;
-  text-align: center;
-  margin-bottom: 1em;
+}
+
+.menu_button {
+  text-decoration: underline;
+}
+
+.quote {
+  text-align: left;
+  font-style: italic;
+}
+
+.credit {
+  text-align: right;
 }
 
 #header {
-  font-size: 4em;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 0em;
 }
 
 #sub-header {
-  font-size: 2em;
-  text-align: center;
-  margin-bottom: 1em;
 }
 
 #game {
@@ -66,76 +65,122 @@ body {
   border: none;
 }
 
-.menu_button {
-  font-size: 3em;
-  text-align: center;
-  margin-bottom: 0.5em;
-  text-decoration: underline;
-}
-
-#logo {
-  margin-top: 3em;
-  text-align: center;
-}
-
-#logo img {
-
-}
-
-#interstitials {
-  margin: 0 auto;
-  width: 50vw;
-  font-size: 3em;
+#pgn {
+  border: 1px solid grey;
+  overflow-y: scroll;
   text-align: left;
-  font-style: italic;
-  margin-top: 2em;
 }
 
-.quote {
-  margin-bottom: 0.5em;
-}
+@media only screen and (max-device-width: 768px) {
+  body {
+    background-color: white;
+  }
 
-.credit {
-  font-size: 0.75em;
-  text-align: right;
-  font-style: normal;
-}
-
-.nodisplay {
-  display: none;
-}
-
-
-@media only screen and (min-device-width: 768px) {
+  #wrapper {
+    width: 90vw;
+    height: 100vh;
+  }
 
   #title {
-    margin-top: 2em;
-    font-size: 1.5em;
-    font-weight: bold;
-    text-align: center;
+    padding-top: 2em;
+    font-size: 4em;
+    padding-bottom: 1em;
+  }
+
+  .menu_button {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+  }
+
+  .quote {
+    font-size: 4em;
+    padding-top: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 1em;
+  }
+
+  .credit {
+    font-size: 3em;
+    text-align: right;
+    font-style: normal;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  #header {
+    font-size: 4em;
+    padding-top: 1em;
+  }
+
+  #sub-header {
+    font-size: 2em;
     margin-bottom: 1em;
   }
 
-  #interstitials {
+  #board {
+    width: 90vw;
+  }
+
+  #pgn {
+    margin-top: 1em;
+    width: 90vw;
+    font-size: 3em;
+    height: 20vw;
+  }
+
+  #logo img {
+    padding-top: 10em;
+  }
+}
+
+@media only screen and (min-device-width: 768px) {
+
+  #wrapper {
+    width: 480px;
+    height: 640px;
+  }
+
+  #main {
+    margin-top: 2em;
+    /* padding: 20px; */
+  }
+
+  #title {
     font-size: 2em;
+    margin-bottom: 2em;
+    padding-top: 2em;
+  }
+
+  .menu_button {
+    font-size: 1.75em;
+    margin-bottom: 0.5em;
+  }
+
+  .quote {
+    padding-top: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    font-size: 1.25em;
+  }
+
+  .credit {
+    padding-right: 40px;
+    font-size: 1em;
   }
 
   #header {
     font-size: 1.5em;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 0em;
+    padding-top: 1em;
   }
 
   #sub-header {
     font-size: 1em;
-    text-align: center;
     margin-bottom: 1em;
   }
 
-
   #game {
-    /* background-color: red; */
     width: 400px;
   }
 
@@ -148,28 +193,13 @@ body {
     width: 400px;
     font-size: 1.5em;
     height: 100px;
-    overflow-y: scroll;
-    border: 1px solid grey;
-  }
-
-  .menu_button {
-    font-size: 1.5em;
-    text-align: center;
-    margin-bottom: 0.5em;
-    text-decoration: underline;
   }
 
   #logo img {
     max-width: 50px;
-    text-align: center;
+    padding-top: 40px;
   }
-
 }
-
-
-#menu {
-}
-
 
 #sisyphus {
   text-decoration-color: #aaf;

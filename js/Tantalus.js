@@ -23,17 +23,26 @@ class Tantalus extends BaseChess {
     this.game.load('rnbq1bnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
     this.board.position(this.game.fen(),false);
 
-    $('.chessboard-63f37').prepend(`<div id="extra-board" class="board-b72b1" style="width: ${width}px; height: ${width/8}px"></div>`);
-    $('#extra-board').css({
-      borderColor: 'rgb(0,0,0,0)'
-    });
-    $('#extra-board').prepend('<div id="extra-row" class="row-5277c"></div>');
+    // $('.chessboard-63f37').prepend(`<div id="extra-board" class="board-b72b1" style="width: ${width}px; height: ${width/8}px"></div>`);
+    // $('#extra-board').css({
+    //   borderColor: 'rgb(0,0,0,0)'
+    // });
+    // $('#extra-board').prepend('<div id="extra-row" class="row-5277c"></div>');
     let squareSize = $('.square-55d63').width();
-    $('#extra-row').append(`<img src="assets/images/chesspieces/wikipedia/blank.png" alt="" class="piece-417db" data-piece="bR" style="width: ${squareSize}px; height: ${squareSize}px;">`);
-    $('#extra-row').append(`<img src="assets/images/chesspieces/wikipedia/blank.png" alt="" class="piece-417db" data-piece="bR" style="width: ${squareSize}px; height: ${squareSize}px;">`);
-    $('#extra-row').append(`<img src="assets/images/chesspieces/wikipedia/blank.png" alt="" class="piece-417db" data-piece="bR" style="width: ${squareSize}px; height: ${squareSize}px;">`);
-    $('#extra-row').append(`<img src="assets/images/chesspieces/wikipedia/blank.png" alt="" class="piece-417db" data-piece="bR" style="width: ${squareSize}px; height: ${squareSize}px;">`);
-    $('#extra-row').append(`<img src="assets/images/chesspieces/wikipedia/bK.png" alt="" class="piece-417db" data-piece="bR" style="width: ${squareSize}px; height: ${squareSize}px;">`);
+    // $('#extra-row').append(`<img src="assets/images/chesspieces/wikipedia/blank.png" alt="" class="piece-417db" data-piece="bR" style="width: ${squareSize}px; height: ${squareSize}px;">`);
+    // $('#extra-row').append(`<img src="assets/images/chesspieces/wikipedia/blank.png" alt="" class="piece-417db" data-piece="bR" style="width: ${squareSize}px; height: ${squareSize}px;">`);
+    // $('#extra-row').append(`<img src="assets/images/chesspieces/wikipedia/blank.png" alt="" class="piece-417db" data-piece="bR" style="width: ${squareSize}px; height: ${squareSize}px;">`);
+    // $('#extra-row').append(`<img src="assets/images/chesspieces/wikipedia/blank.png" alt="" class="piece-417db" data-piece="bR" style="width: ${squareSize}px; height: ${squareSize}px;">`);
+    // $('#extra-row').append(`<img src="assets/images/chesspieces/wikipedia/bK.png" alt="" class="piece-417db" data-piece="bR" style="width: ${squareSize}px; height: ${squareSize}px;">`);
+
+    let $king = $(`<img src="assets/images/chesspieces/wikipedia/bK.png" alt="" class="piece-417db" data-piece="bR" style="width: ${squareSize}px; height: ${squareSize}px;">`)
+    $king.css({
+      position: 'relative',
+      top: -squareSize,
+      left: 0
+    });
+    $('.square-e8').append($king);
+
 
     $(document).on('keyup',(e) => { this.resetGame(); });
   }

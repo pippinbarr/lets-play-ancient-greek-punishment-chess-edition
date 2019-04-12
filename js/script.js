@@ -17,6 +17,9 @@ let captureSFX = new Howl({
 
 let months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
+let FADE_TIME =  500;
+let QUOTE_TIME = 3000;
+
 $(document).ready(function () {
 
   $('.menu_button').on('click',menuButtonClicked);
@@ -55,14 +58,14 @@ function menuButtonClicked() {
     break;
   }
 
-  $('#menu').fadeOut(1000,() => {
-    $(`#${level}-interstitial`).fadeIn(1000,() => {
+  $('#menu').fadeOut(FADE_TIME,() => {
+    $(`#${level}-interstitial`).fadeIn(FADE_TIME,() => {
       setTimeout(() => {
-        $(`#${level}-interstitial`).fadeOut(1000,() => {
+        $(`#${level}-interstitial`).fadeOut(FADE_TIME,() => {
           chess = new GameClass();
           $('#game').fadeIn(500);
         });
-      },3000);
+      },QUOTE_TIME);
     })
   });
 }

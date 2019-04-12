@@ -8,6 +8,7 @@
 - ~~Think about how to make this a non-disgusting coding experience (OOP???)~~
 - ~~All games need SFX for movement, captures~~
 - ~~__IT DID__ Move SFX to Howler in case that gets it working better on mobile?~~
+- ~~Do something about the background stuff because it looks a bit unmoored in desktop, esp. in menu (the menu still looks a bit non-amazing in general?)~~
 
 ## Menu
 
