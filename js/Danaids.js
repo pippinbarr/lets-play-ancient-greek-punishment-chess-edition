@@ -9,7 +9,7 @@ class Danaids extends BaseChess {
   setup (depth) {
     super.setup(depth);
 
-    this.currentType = null;
+    this.currentPlaces = [];
     let squareSize = $('.square-55d63').width();
 
     // Go through the spare pieces list and add them to the page
@@ -63,10 +63,12 @@ class Danaids extends BaseChess {
     $(`.piece-417db`).removeClass(`highlight1-32417`);
     // Highlight the piece itself
     $piece.addClass(`highlight1-32417`)
+    attackSFX.play();
     // Get the type of this piece
     let type = $piece.attr('data-piece')[1];
     // Get the list of places this piece could potentially go (not all will be valid)
     let places = placements[type];
+    this.currentPlaces = places;
     // Go through each possible placement
     for (let j = 0; j < places.length; j++) {
       // Check if there's already a placed piece
@@ -74,45 +76,56 @@ class Danaids extends BaseChess {
         // If not, we can place it there!
         this.highlight(places[j].square);
         // Now we want to listen for a click on that square to place the piece
-        $(`.square-${places[j].square}`).on('click',() => {
-          // Check if there's already a placed piece
-          if (!places[j].placed) {
-            // We're placing the piece so...
-            // Clear the highlight on the square
-            // this.clearHighlight($(`.square-${places[j].square}`));
-            this.clearHighlights();
-            // Disable clicking on all squares
-            $(`.square-55d63`).off('click');
-            // Unhighlight the current piece type
-            $piece.removeClass(`highlight1-32417`);
-            // Clone the piece we're placing
-            let $newPiece = $piece.clone();
-            // Remove the highlight from the piece (it's highlighted from being selected as a spare piece)
-            this.clearHighlight($newPiece);
-            // Add the piece to the square
-            $newPiece.appendTo(`.square-${places[j].square}`);
-            // Set that square to placed
-            places[j].placed = true;
-            // Make the piece fall after a delay
-            setTimeout(() => {
-              $newPiece.css({
-                position: 'relative',
-                zIndex: 1000
-              })
-              $newPiece.animate({
-                top: $(document).height()
-              },1000,() => {
-                $newPiece.remove();
-                places[j].placed = false;
-              });
-            },2000 + Math.random() * 5000);
-
-          }
-
-
-        });
+        $(`.square-${places[j].square}`).on('click',() => { this.onSquareClicked(places, $piece, j) });
       }
     }
+  }
+
+  onSquareClicked (places, $piece, j) {
+    // Check if there's already a placed piece
+    if (!places[j].placed) {
+      // We're placing the piece so...
+      // Clear the highlight on the square
+      this.clearHighlight($(`.square-${places[j].square}`));
+      // this.clearHighlights();
+      // Disable clicking on all squares
+      // $(`.square-55d63`).off('click');
+      $((`.square-${places[j].square}`)).off('click');
+      // Unhighlight the current piece type
+      // $piece.removeClass(`highlight1-32417`);
+      // Clone the piece we're placing
+      let $newPiece = $piece.clone();
+      // Remove the highlight from the piece (it's highlighted from being selected as a spare piece)
+      this.clearHighlight($newPiece);
+      // Add the piece to the square
+      $newPiece.appendTo(`.square-${places[j].square}`);
+      placeSFX.play();
+
+      // Set that square to placed
+      places[j].placed = true;
+      // Make the piece fall after a delay
+      setTimeout(() => {
+        places[j].placed = false;
+        for (let k = 0; k < this.currentPlaces.length; k++) {
+          if (this.currentPlaces[k].square === places[j].square) {
+            $(`.square-${places[j].square}`).addClass(`highlight1-32417`);
+            $(`.square-${places[j].square}`).on('click',() => { this.onSquareClicked(places, $piece, j) });
+          }
+        }
+        $newPiece.css({
+          position: 'relative',
+          zIndex: 1000
+        })
+        $newPiece.animate({
+          top: $(document).height()
+        },1000,() => {
+          $newPiece.remove();
+        });
+      },2000 + Math.random() * 5000);
+
+    }
+
+
   }
 }
 

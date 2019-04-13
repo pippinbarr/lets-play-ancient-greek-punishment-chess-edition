@@ -14,6 +14,9 @@ const placeSFX = new Howl({
 const captureSFX = new Howl({
   src: ['assets/sounds/capture.wav']
 });
+const attackSFX = new Howl({
+  src: ['assets/sounds/attack.wav']
+});
 
 const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
