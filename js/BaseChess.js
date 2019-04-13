@@ -3,11 +3,13 @@
 class BaseChess {
 
   constructor (depth) {
+    console.log("BaseChess()");
     this.setup(depth);
   }
 
   setup (depth) {
-    // console.log("BaseChess setup",depth)
+    console.log("BaseChess.setup");
+
     let config = {
       draggable: false,
       position: 'start',
@@ -132,6 +134,11 @@ class BaseChess {
   clearHighlights() {
     $('.square-55d63').removeClass(`highlight1-32417`);
   }
+
+  clearHighlight(element) {
+    $(element).removeClass(`highlight1-32417`);
+  }
+
 
   // Highlight the specified square
   highlight(square) {

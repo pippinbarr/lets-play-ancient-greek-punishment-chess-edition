@@ -3,141 +3,148 @@
 class Danaids extends BaseChess {
 
   constructor () {
-    super(3);
-
-    // Here is a position with mate in one for white
-    // this.game = new Chess('rnbqkbnr/ppppp2p/8/5pp1/8/5Q2/PPPPPPPP/RNB1KBNR w KQkq - 0 1');
-    // this.board.position(this.game.fen());
+    super(1);
   }
 
   setup (depth) {
     super.setup(depth);
+
+    this.currentType = null;
+    let squareSize = $('.square-55d63').width();
+
+    // Go through the spare pieces list and add them to the page
+    for (let i = 0; i < pieces.length; i++) {
+      let $piece = $(`<img src="assets/images/chesspieces/wikipedia/w${pieces[i]}.png" alt="" class="piece-417db" data-piece="w${pieces[i]}" style="width: ${squareSize}px; height: ${squareSize}px;">`)
+      $piece.on('click',() => { this.sparePieceClicked($piece) });
+      $('.chessboard-63f37').append($piece);
+    }
+
     let date = new Date();
-    if (this.gameNumber === undefined) this.gameNumber = 1;
-    let winNote = '';
-    if (this.gameNumber === 2) winNote = ` (Zeus leads by ${this.gameNumber - 1} game)`;
-    else if (this.gameNumber > 2) winNote = ` (Zeus leads by ${this.gameNumber - 1} games)`;
 
     $('#header').html(`Danaids vs. Zeus`)
-    $('#sub-header').html(`Game #${this.gameNumber}${winNote}<br \>Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
+    $('#sub-header').html(`Game #1<br \>Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
+
+    this.whitePieces = [];
+    $('.piece-417db').each((index,piece) => {
+      let $piece = $(piece);
+      if ($piece.parent().hasClass('square-55d63')) {
+        if ($piece.attr('data-piece').indexOf('w') !== -1) {
+          $piece.square = $piece.parent().attr('data-square');
+          this.whitePieces.push($piece);
+        }
+      }
+    });
+
+    this.whitePieces.forEach(($piece) => {
+      setTimeout(() => {
+        $piece.css({
+          position: 'relative',
+          zIndex: 1000
+        })
+        $piece.animate({
+          top: '+=500px'
+        },() => {
+          // this.board.remove($piece.square);
+          $piece.remove();
+        });
+      },100 + Math.random() * 1000);
+    });
+
+    $('#pgn').hide();
+  }
+
+  squareClicked () {
 
   }
 
-  moveBlack() {
-    this.moves++;
-    let move = this.getBlackMove();
-    this.lastMove = this.game.move(move);
-    if (this.game.in_checkmate() || this.game.in_stalemate()) {
-      let note = 'Zeus wins';
-      this.lastMove.san += ' 0-1';
-      // No more interaction
-      $('.square-55d63').off('click');
-      this.updatePGN(this.lastMove,note);
-      this.board.position(this.game.fen(),true);
-      setTimeout(() => { this.resetGame() },5000);
-      return;
-    }
-
-    this.updatePGN(this.lastMove,'');
-    this.board.position(this.game.fen(),true);
-  }
-
-  moveWhite(from,to) {
-    // Make the move in the game representation
-    let move = {
-      from: from,
-      to: to,
-      promotion: 'q' // NOTE: always promote to a queen for example simplicity
-    };
-    this.lastMove = this.game.move(move);
-
-    // Update the board based on the new position
-    this.board.position(this.game.fen(),true);
-
-    let note = '';
-
-    if (this.lastMove.captured != undefined) {
-      note += this.handleCapture();
-    }
-
-    // Need to handle checkmate separately since the last move could have been a capture
-    // that yielded checkmate!
-    if (this.game.in_checkmate()) {
-      note += this.handleCheckmate();
-    }
-
-    this.updatePGN(this.lastMove,note);
-
-
-    // Clear all highlights from the board (a new turn is about to begin)
+  sparePieceClicked ($piece) {
+    // Clear all highlights since we'll want to only highlight valid squares
     this.clearHighlights();
+    $(`.piece-417db`).removeClass(`highlight1-32417`);
+    // Highlight the piece itself
+    $piece.addClass(`highlight1-32417`)
+    // Get the type of this piece
+    let type = $piece.attr('data-piece')[1];
+    // Get the list of places this piece could potentially go (not all will be valid)
+    let places = placements[type];
+    // Go through each possible placement
+    for (let j = 0; j < places.length; j++) {
+      // Check if there's already a placed piece
+      if (!places[j].placed) {
+        // If not, we can place it there!
+        this.highlight(places[j].square);
+        // Now we want to listen for a click on that square to place the piece
+        $(`.square-${places[j].square}`).on('click',() => {
+          // Check if there's already a placed piece
+          if (!places[j].placed) {
+            // We're placing the piece so...
+            // Clear the highlight on the square
+            // this.clearHighlight($(`.square-${places[j].square}`));
+            this.clearHighlights();
+            // Disable clicking on all squares
+            $(`.square-55d63`).off('click');
+            // Unhighlight the current piece type
+            $piece.removeClass(`highlight1-32417`);
+            // Clone the piece we're placing
+            let $newPiece = $piece.clone();
+            // Remove the highlight from the piece (it's highlighted from being selected as a spare piece)
+            this.clearHighlight($newPiece);
+            // Add the piece to the square
+            $newPiece.appendTo(`.square-${places[j].square}`);
+            // Set that square to placed
+            places[j].placed = true;
+            // Make the piece fall after a delay
+            setTimeout(() => {
+              $newPiece.css({
+                position: 'relative',
+                zIndex: 1000
+              })
+              $newPiece.animate({
+                top: '+=500px'
+              },() => {
+                $newPiece.remove();
+                places[j].placed = false;
+              });
+            },2000 + Math.random() * 5000);
 
-    // Reset the move tracking
-    this.from = null;
-
-    setTimeout(() => {
-      this.moveBlack();
-    },500);
-  }
-
-  handleCapture() {
-    let type = this.lastMove.captured;
-    let square = this.placeInFirstEmpty({type: this.lastMove.captured, color: this.game.BLACK});
-    let note = `${type.toUpperCase()}→${square}`;
-    return note;
-  }
-
-  handleCheckmate() {
-    let square = this.placeInFirstEmpty({type: this.game.KING, color: this.game.BLACK});
-    let note = `K->${square}`;
-    return note;
-  }
-
-  placeInFirstEmpty(piece) {
-    let cols = "abcdefgh";
-    let position = this.board.position();
-
-    if (piece.type === this.game.KING) {
-      // Find the king first and remove it from the board
-      for (let row = 8; row >= 1; row--) {
-        for (let col = 0; col < cols.length; col++) {
-          let square = `${cols.charAt(col)}${row}`;
-          if (position[square] === 'bK') {
-            this.game.remove(square);
           }
-        }
+
+
+        });
       }
     }
-
-    // Now find a position with our piece places that doesn't yield check...
-    for (let row = 8; row >= 1; row--) {
-      for (let col = 0; col < cols.length; col++) {
-        // Get the square notation
-        let square = `${cols.charAt(col)}${row}`;
-        // If there's already a piece on it, it's not a candidate
-        if (position[square] !== undefined) continue;
-        // Place our piece in this square in the game representation
-        let placed = this.game.put(piece,square);
-        // If it was successfully place and it doesn't lead to a check
-        if (placed && !(this.game.in_check() && piece.type === this.game.KING)) {
-          // Then update the board with this new position
-          this.board.position(this.game.fen());
-          // And return the square we used for the note
-          return square;
-        }
-        else {
-          // Otherwise, we weren't able to place the piece at this square, so on we go
-          this.game.remove(square);
-        }
-      }
-    }
-    console.log("IT WOULD BE BAD TO SEE THIS!");
-    return undefined;
-  }
-
-  resetGame() {
-    $('#board').html('');
-    this.gameNumber++;
-    this.setup(this.depth);
   }
 }
+
+
+let pieces = ['P','N','B','R','Q','K'];
+let placements = {
+  P: [
+    {square:'a2',placed:false},
+    {square:'b2',placed:false},
+    {square:'c2',placed:false},
+    {square:'d2',placed:false},
+    {square:'e2',placed:false},
+    {square:'f2',placed:false},
+    {square:'g2',placed:false},
+    {square:'h2',placed:false},
+  ],
+  N: [
+    {square:'b1',placed:false},
+    {square:'g1',placed:false},
+  ],
+  B: [
+    {square:'c1',placed:false},
+    {square:'f1',placed:false},
+  ],
+  R: [
+    {square:'a1',placed:false},
+    {square:'h1',placed:false},
+  ],
+  Q: [
+    {square:'d1',placed:false},
+  ],
+  K: [
+    {square:'e1',placed:false},
+  ],
+};
