@@ -71,9 +71,9 @@
 - ~~Handle black checkmates white~~
 - ~~Yes I should add a stalemate check even though it should never happen~~
 - ~~Uh oh I think this needs to be reworked to have white's pieces fall off the board like water, and need to be replaced (maybe they fall all the way off the screen)~~
+- ~~Re-highlight other squares as they become available due to falling pieces? (if that piece is still selected?)~~
+- ~~SFX~~
 
-- Re-highlight other squares as they become available due to falling pieces? (if that piece is still selected?)
-- SFX
 - Do the initial pieces fall fast enough? (Delay clickability of the spares?)
 
 ## Mobile?

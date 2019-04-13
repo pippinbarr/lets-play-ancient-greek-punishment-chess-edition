@@ -35,6 +35,7 @@ class Danaids extends BaseChess {
       }
     });
 
+    this.originalPiecesNumber = 16;
     this.whitePieces.forEach(($piece) => {
       setTimeout(() => {
         $piece.css({
@@ -48,7 +49,9 @@ class Danaids extends BaseChess {
           $piece.remove();
         });
       },100 + Math.random() * 1000);
+      this.originalPiecesNumber--;
     });
+
 
     $('#pgn').hide();
   }
@@ -58,6 +61,8 @@ class Danaids extends BaseChess {
   }
 
   sparePieceClicked ($piece) {
+    if (this.originalPiecesNumber !== 0) return;
+    
     // Clear all highlights since we'll want to only highlight valid squares
     this.clearHighlights();
     $(`.piece-417db`).removeClass(`highlight1-32417`);
