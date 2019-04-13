@@ -42,8 +42,8 @@ class Danaids extends BaseChess {
           zIndex: 1000
         })
         $piece.animate({
-          top: '+=500px'
-        },() => {
+          top: $(document).height()
+        },1000,() => {
           // this.board.remove($piece.square);
           $piece.remove();
         });
@@ -100,8 +100,8 @@ class Danaids extends BaseChess {
                 zIndex: 1000
               })
               $newPiece.animate({
-                top: '+=500px'
-              },() => {
+                top: $(document).height()
+              },1000,() => {
                 $newPiece.remove();
                 places[j].placed = false;
               });
