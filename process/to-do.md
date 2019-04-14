@@ -60,8 +60,7 @@
 - ~~I broke the styling~~
 - ~~Handle black checkmates white~~
 - ~~Yes I should add a stalemate check even though it should never happen~~
-
-- Should the king just step off the board on check? Is that funnerer? What do you do if someone moves onto his square? Can he capture white if they play to e8? Seems like it might introduce too many complexities having it be dynamic?
+- ~~Should the king just step off the board on check? Is that funnerer? What do you do if someone moves onto his square? Can he capture white if they play to e8? Seems like it might introduce too many complexities having it be dynamic? Just animate the king off the board after white's first move?~~
 
 ## Danaids
 

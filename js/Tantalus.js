@@ -23,19 +23,28 @@ class Tantalus extends BaseChess {
     this.board.position(this.game.fen(),false);
 
     this.squareSize = $('.square-55d63').width();
-    let $king = $(`<img src="assets/images/chesspieces/wikipedia/bK.png" alt="" style="width: ${this.squareSize}px; height: ${this.squareSize}px;">`)
-    $king.css({
+    this.$king = $(`<img src="assets/images/chesspieces/wikipedia/bK.png" alt="" style="width: ${this.squareSize}px; height: ${this.squareSize}px;">`)
+    this.$king.css({
       position: 'relative',
-      top: -this.squareSize,
+      top: 0,
       left: 0
     });
-    $('.square-e8').append($king);
+    $('.square-e8').append(this.$king);
 
 
     $(document).on('keyup',(e) => { this.resetGame(); });
   }
 
-
+  moveWhite(from,to) {
+    super.moveWhite(from,to);
+    if (this.moves === 0) {
+      setTimeout(() => {
+        this.$king.animate({
+          top: -this.squareSize
+        },200);
+      },200);
+    }
+  }
 
   moveBlack() {
     this.moves++;
