@@ -61,6 +61,8 @@
 - ~~Handle black checkmates white~~
 - ~~Yes I should add a stalemate check even though it should never happen~~
 
+- Should the king just step off the board on check? Is that funnerer? What do you do if someone moves onto his square? Can he capture white if they play to e8? Seems like it might introduce too many complexities having it be dynamic?
+
 ## Danaids
 
 - ~~__JUST A SIMPLE RESPAWN ACTUALLY LOOKS QUITE GOOD, NO PARTICULAR NEED TO ANIMATE IN FANCY WAYS?__ Get a basic version of respawning pieces when captured going~~
@@ -92,4 +94,6 @@
 
 ## Bugs
 
-- The margin at the top is really irritating and my css sucks
+- ~~The margin at the top is really irritating and my css sucks~~
+- ~~Tantalus black king vanishes on first move~~
+- ~~Tantalus black doesn't move~~

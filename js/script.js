@@ -20,8 +20,8 @@ const attackSFX = new Howl({
 
 const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
-const FADE_TIME =  500;
-const QUOTE_TIME = 3000;
+const FADE_TIME =  1;//500;
+const QUOTE_TIME = 1;//3000;
 
 $(document).ready(function () {
 
