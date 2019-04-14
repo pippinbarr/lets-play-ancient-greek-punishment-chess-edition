@@ -86,7 +86,7 @@
 
 ## Test
 
-- Send to J+M and Jonathan and...?
+- ~~Send to J+M and Jonathan and...?~~
 
 
 ## Release
