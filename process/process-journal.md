@@ -188,8 +188,62 @@ Perhaps when you checkmate the king is just moves to another square elsewhere (n
 
 ---
 
-# ()
+# "Finished" (Monday, 15 April 2019, 11:07AM)
 
+At this point I think the game is basically completed with maybe just some styling issues left to consider (and also to consider whether I want to consider stupid stuff like people resizing the page while playing which... nah... and people going into landscape while playing which... nah...)
 
+I really haven't done a great job of keeping this process journal updated while making the game, in part because I feel like the design process has kind of rushed along and I had insights into what to do while writing commit messages or even writing out to-dos. The point where there hasn't been the same need to sit back and think quite so philosophically about how the game should feel.
+
+As such, let me at least review a few key decisions that got made.
+
+## Displaying the number of games played
 
 ![](images/prometheus-vs-zeus.png)
+
+I became a bit dissatisfied with the game headers at some point because they weren't really reflective of the idea of ongoing punishment in the versions where multiple games would be played (e.g. white getting checkmated and the game restarting). So I wanted to include some indication of the history of play. Took a while to feel like I had the right idea, but I do like the mean emphasis on how many games Zeus is winning by in each case (or Archimedes for Zeno), it's so pointed and depressing. I also made Zeus win in the case of stalemate which amuses me too. Basically if the game ends, white loses, because they can't ever checkmate black (it's impossible in all forms especially now that Danaids is different).
+
+## Danaids overhaul
+
+After sending the game out to testers (though I only really heard back from Jim), I had my suspicions that Danaids was unclear confirmed and ended up feeling like I needed to rework it. Originally the idea was that every captured black piece would "slip through your fingers like water" and go back onto the board. I think the metaphor is pretty sound, but when you're playing it just feels like a comically unfair game of chess, which is good but not great. So I went back into it trying to think about water and went with the idea of the _white_ pieces being the water, so when you start they all pour off the board and in fact the "gameplay" is you trying to get your pieces set up properly while they continuously pour away.
+
+![](images/danaids-chess-edition.gif)
+
+I like this for a lot of reasons
+- It's visually interesting in a different way to the other games (each one has its own kind of visual/animated signature which adds to the feeling of variety)
+- It genuinely captures the idea of water pouring out of a container and so strongly evokes the original myth in a clear way, rather than in a metaphorical way (I mean, it's still a metaphor, but a much more direct implementation of the entailments?)
+- It allows playing with another part of chess that I hadn't been thinking about, which is setup. This speaks the broader question of what it means to play chess - is setting the board up part of the game? I think it's possible to answer that with a yes, or at the very least to say that the larger social practice of chess includes that
+- It engages with that part of chess specifically as represented in digital chessboards - chessboard.js even has the specific ability to display "spare pieces" which you can drag into play to set up scenarios. In the end I couldn't use it because I needed a lot more control over how the pieces behaved, but it's nice to feel like there's a hook at the technical level
+
+## Prometheus Bound
+
+I originally implemented Prometheus to have a lone king that would be able to move around, opposed by the entire black army. One problem I ran into was stalemate, so I try to make the black AI allergic to stalemate, which largely work (though this is kind of superceded by stalemate being a black victory).
+
+I'd visualised the white moves as "struggles", but when you play it, it looks like too much freedom and doesn't convey the idea of being bound properly. So instead I went with a version where every white move is just the king struggling in his bounds and staying on the same square, completely with PGN reflecting it.
+
+I should also mention that I had a conversation with students about this one (in the prior version where the white king could move) and they said a couple of interesting things about the specific metaphor of the eagle, suggesting that maybe it should be queens or bishops "swooping" in at the king to attack it in order to preserve that specific idea. I like that kind of thinking, and it reflects a larger design question about how specifically you want to represent the nature of myth and the whole distinction between "in spirit" and more literally interpretations. Ultimately I guess a satisfying design is going to walk the line with it, and the "satisfying" bit will just need to be the satisfaction of the designer?
+
+## Checkmates
+
+As in the previous post, I spent time fretting about checkmate in both directions. Notably you don't want white to checkmate black (it's meant to be a more futile experience than that!)
+
+- Sisyphus never begins so no problem there
+- Prometheus can't move so that similarly no problem
+- Tantalus has no black king on the board to it can't be checkmated
+- Zeno effectively "can't move" so again no problem
+- Danaids also never begins now (it used to be a concern as I wondered whether it might have been possible to checkmate black with amazing play, but even then I ended up implementing the idea that the black king would just teleport out of check)
+
+Similarly, I need black to be able to checkmate white through standard play (since the AI needs to accomplish it!)
+
+- Sisyphus never begins, so no problem
+- Danaids never begins, so no problem
+- Prometheus can't move so I made it that any check is effectively checkmate
+- Zeno is similar to the above, any check it effectively checkmate
+- Tantalus plays normally, so black can checkmate white for sure - the game could also end in stalemate, in which case black also wins
+
+So this key question of how to handle game-ending stuff is pretty well handle I guess?
+
+## And now?
+
+Well I think it's kind of done, eh. There's definitely more I could do to make it slicker, but like everything I do it's pretty much conceptual with aesthetics being advanced far enough to support the idea and no further? In which case press kit etc. and release... Friday? Next week Wednesday? Tuesday? Bleagh?
+
+Actually just quietly went and tweaked the CSS a tiny bit and it looks nicer. And then fixed underline color on iOS (needed webkit version). And then fixed weird scrolling issue on iOS (wrapper height set to 100% and overflow hidden). And then ran into stuff with the pieces falling in Danaids causing ability to scroll. And then fighting against this. And then giving up. And this is why we despite mobile versions of our non-pure-canvas games, kids. Sheesh.

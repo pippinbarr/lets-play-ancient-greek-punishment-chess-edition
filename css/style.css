@@ -16,7 +16,6 @@ body {
   padding: 0 !important;
   font-family: Times, serif;
   overflow: hidden;
-  background-color: rgb(240,240,240);
   text-align: center;
 }
 
@@ -80,12 +79,13 @@ body {
 
 @media only screen and (max-device-width: 768px) {
   body {
-    background-color: white;
+    background-color: #fffef9;
   }
 
   #wrapper {
     width: 90vw;
-    height: 100vh;
+    height: 100%;
+    background-color: #fffef9;
   }
 
   #title {
@@ -95,7 +95,7 @@ body {
   }
 
   .menu_button {
-    font-size: 3em;
+    font-size: 4em;
     margin-bottom: 0.5em;
   }
 
@@ -143,13 +143,20 @@ body {
 
 @media only screen and (min-device-width: 768px) {
 
+  body {
+    /* background-color: rgb(240,240,240); */
+  }
+
   #wrapper {
     width: 480px;
-    height: 640px;
+    /* height: 640px; */
   }
 
   #main {
     margin-top: 2em;
+    border: 1px solid #aaa;
+    height: 640px;
+    background-color: #fffef9;
     /* padding: 20px; */
   }
 
@@ -210,20 +217,25 @@ body {
 
 #sisyphus {
   text-decoration-color: #aaf;
+  -webkit-text-decoration-color: #aaf;
 }
 
 #prometheus {
   text-decoration-color: #faa;
+  -webkit-text-decoration-color: #faa;
 }
 
 #zeno {
   text-decoration-color: #dad;
+  -webkit-text-decoration-color: #dad;
 }
 
 #danaids {
   text-decoration-color: #dda;
+  -webkit-text-decoration-color: #dda;
 }
 
 #tantalus {
   text-decoration-color: #ada;
+  -webkit-text-decoration-color: #ada;
 }
