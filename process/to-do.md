@@ -89,7 +89,8 @@
 
 ## Release
 
-- Make press kit
+- ~~Make press kit~~
+
 - Send to press
 - Make webpage for my site
 - Sigh about it
