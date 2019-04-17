@@ -91,8 +91,8 @@
 - ~~10 peck Prometheus?~~
 - ~~__MAYBE SOLVED BY DISABLING INPUT WHENEVER WHITE NOT TO PLAY__ Prometheus king goes off board? (Make it a non-piece maybe??)~~
 - ~~Revisit SFX~~
+- ~~Fix sound formats for all browser~~
 
-- Fix sound formats for all browser
 - Textbox weirdness in Firefox (issues around fonts I assume)
 
 ## Release

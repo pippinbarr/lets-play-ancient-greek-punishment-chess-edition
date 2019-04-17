@@ -9,16 +9,16 @@ Pippin Barr
 
 // The sound effects
 const placeSFX = new Howl({
-  src: ['assets/sounds/place.wav']
+  src: ['assets/sounds/place.wav','assets/sounds/place.mp3']
 });
 const captureSFX = new Howl({
-  src: ['assets/sounds/capture.wav']
+  src: ['assets/sounds/capture.wav','assets/sounds/capture.mp3']
 });
 const attackSFX = new Howl({
-  src: ['assets/sounds/attack.wav']
+  src: ['assets/sounds/attack.wav','assets/sounds/attack.mp3']
 });
 const fallSFX = new Howl({
-  src: ['assets/sounds/fall.wav']
+  src: ['assets/sounds/fall.wav','assets/sounds/fall.mp3']
 });
 
 const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -78,6 +78,5 @@ function menuButtonClicked() {
 
 function getTextTime(text) {
   let time = (text.length * 65);
-  return 1;
   return time;
 }
