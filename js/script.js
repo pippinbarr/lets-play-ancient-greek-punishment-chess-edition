@@ -23,7 +23,7 @@ const fallSFX = new Howl({
 
 const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
-const FADE_TIME =  1;//500;
+const FADE_TIME =  500;
 const RESET_TIME = 5000;
 
 $(document).ready(function () {
@@ -69,7 +69,7 @@ function menuButtonClicked() {
       setTimeout(() => {
         $(`#${level}-interstitial`).fadeOut(FADE_TIME,() => {
           chess = new GameClass();
-          $('#game').fadeIn(500);
+          $('#game').fadeIn(FADE_TIME);
         });
       },getTextTime($(`#${level}-interstitial .quote`).text()));
     })

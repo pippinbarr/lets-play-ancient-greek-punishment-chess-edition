@@ -40,22 +40,24 @@ class Danaids extends BaseChess {
     });
 
     this.originalPiecesNumber = 16;
-    this.whitePieces.forEach(($piece) => {
-      setTimeout(() => {
-        $piece.css({
-          position: 'relative',
-          zIndex: 1000
-        });
-        fallSFX.play();
-        $piece.animate({
-          top: $(document).height()
-        },1000,() => {
-          // this.board.remove($piece.square);
-          $piece.remove();
-        });
-      },100 + Math.random() * 1000);
-      this.originalPiecesNumber--;
-    });
+    setTimeout(() => {
+      this.whitePieces.forEach(($piece) => {
+        setTimeout(() => {
+          $piece.css({
+            position: 'relative',
+            zIndex: 1000
+          });
+          fallSFX.play();
+          $piece.animate({
+            top: $(document).height()
+          },1000,() => {
+            // this.board.remove($piece.square);
+            $piece.remove();
+          });
+        },FADE_TIME + Math.random() * 1000);
+        this.originalPiecesNumber--;
+      });
+    },FADE_TIME);
 
 
   }
