@@ -78,6 +78,7 @@ See animated GIFs below, really.
 ## Credits
 
 * Pippin Barr: basically everything?
+* Rilla Khaled: design and sound consultant
 * Jim and Mary Barr (aka my parents), Jonathan Lessard: testing! Thanks!
 
 ## Contact

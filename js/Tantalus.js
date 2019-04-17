@@ -30,9 +30,6 @@ class Tantalus extends BaseChess {
       left: 0
     });
     $('.square-e8').append(this.$king);
-
-
-    $(document).on('keyup',(e) => { this.resetGame(); });
   }
 
   moveWhite(from,to) {
@@ -41,7 +38,9 @@ class Tantalus extends BaseChess {
       setTimeout(() => {
         this.$king.animate({
           top: -this.squareSize
-        },200);
+        },200,() => {
+          placeSFX.play();
+        });
       },200);
     }
   }
@@ -49,7 +48,6 @@ class Tantalus extends BaseChess {
   moveBlack() {
     this.moves++;
     let move = this.getBlackMove();
-    console.log(move)
     this.lastMove = this.game.move(move);
     if (this.game.in_checkmate() || this.game.in_stalemate()) {
       let note = 'Zeus wins';
@@ -58,13 +56,21 @@ class Tantalus extends BaseChess {
       this.updatePGN(this.lastMove,note);
       this.board.position(this.game.fen(),true);
 
-      setTimeout(() => { this.resetGame() },5000);
+      setTimeout(() => { this.resetGame() },RESET_TIME);
       return;
     }
 
     this.updatePGN(this.lastMove,'');
     this.board.position(this.game.fen(),true);
-
+    setTimeout(() => {
+      if (this.lastMove.captured !== undefined) {
+        captureSFX.play();
+      }
+      else {
+        placeSFX.play();
+      }
+      this.enableInput();
+    },this.config.moveSpeed * 1.1);
   }
 
   resetGame() {

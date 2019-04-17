@@ -7,6 +7,7 @@ class Prometheus extends BaseChess {
   }
 
   setup (depth) {
+    this.liver = 100;
     super.setup(depth);
     this.game.load('rnbqkbnr/pppppppp/8/8/8/8/8/4K3 w kq - 0 1');
     this.board.position(this.game.fen(),false);
@@ -22,6 +23,7 @@ class Prometheus extends BaseChess {
   }
 
   moveWhite(from,to) {
+    this.disableInput();
     // Make the move in the game representation
     let move = {
       from: from,
@@ -31,6 +33,7 @@ class Prometheus extends BaseChess {
       promotion: 'q' // NOTE: always promote to a queen for example simplicity
     };
 
+    attackSFX.play();
     $('.square-e1').find('img').effect({
       effect: 'shake',
       direction: 'left',
@@ -38,12 +41,7 @@ class Prometheus extends BaseChess {
       times: 4,
       duration: '500',
       complete: () => {
-        let fen = this.game.fen();
-        let fenArray = fen.split(' ');
-        fenArray[1] = 'b';
-        fenArray[3] = '-'; // Really don't get how this goes wonky and needs this 'fix'
-        fen = fenArray.join(' ');
-        this.game.load(fen);
+        this.changeTurnTo('b');
 
         this.updatePGN(move,'');
 
@@ -69,22 +67,55 @@ class Prometheus extends BaseChess {
 
     moveBlack() {
       this.moves++;
-      let move = this.getBlackMove();
-      this.lastMove = this.game.move(move);
-      if (this.game.in_check() || this.game.in_stalemate()) {
-        let note = 'Zeus wins';
-        this.lastMove.san = this.lastMove.san.replace('+','#');
-        this.lastMove.san += ' 0-1';
-        // No more interaction
-        $('.square-55d63').off('click');
-        this.updatePGN(this.lastMove,note);
+
+      if (this.checkMove != undefined) {
+        // Game is already in check so we peck
+        let peckMove = {
+          from: this.checkMove.to,
+          to: 'e1'
+        };
+        this.game.move(peckMove);
         this.board.position(this.game.fen(),true);
-        setTimeout(() => { this.resetGame() },5000);
-        return;
+        setTimeout(() => {
+          this.liver -= 10;
+          if (this.liver === 0) {
+            captureSFX.play();
+            this.updatePGN({color: 'b', san: `${this.checkMove.piece.toUpperCase()}xe1# 0-1`},'Zeus wins');
+            setTimeout(() => { this.resetGame() },RESET_TIME);
+          }
+          else {
+            attackSFX.play();
+            this.game.undo();
+            this.board.position(this.game.fen(),true);
+            this.updatePGN({color: 'b', san: `${this.checkMove.piece.toUpperCase()}+e1`},'Peck');
+            setTimeout(() => {
+              placeSFX.play();
+              this.changeTurnTo('w');
+              this.enableInput();
+            },this.config.moveSpeed * 1.1);
+          }
+        },this.config.moveSpeed * 1.1);
+      }
+      else {
+        // Game not in check, so make a move (which may lead to check)
+        let move = this.getBlackMove();
+        this.lastMove = this.game.move(move);
+        this.updatePGN(this.lastMove,'');
+        this.board.position(this.game.fen(),true);
+        setTimeout(() => {
+          if (this.lastMove.captured !== undefined) {
+            captureSFX.play();
+          }
+          else {
+            placeSFX.play();
+          }
+          this.enableInput();
+        },this.config.moveSpeed * 1.1);
+        if (this.game.in_check()) {
+          this.checkMove = this.lastMove;
+        }
       }
 
-      this.updatePGN(this.lastMove,'');
-      this.board.position(this.game.fen(),true);
     }
 
     resetGame() {

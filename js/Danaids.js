@@ -23,6 +23,10 @@ class Danaids extends BaseChess {
 
     $('#header').html(`Danaids vs. Zeus`)
     $('#sub-header').html(`Game #1<br \>Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
+    // $('#pgn').hide();
+    $('#pgn').text('Set up the board before beginning play.');
+    $('#pgn').height('50px');
+
 
     this.whitePieces = [];
     $('.piece-417db').each((index,piece) => {
@@ -41,7 +45,8 @@ class Danaids extends BaseChess {
         $piece.css({
           position: 'relative',
           zIndex: 1000
-        })
+        });
+        fallSFX.play();
         $piece.animate({
           top: $(document).height()
         },1000,() => {
@@ -53,7 +58,6 @@ class Danaids extends BaseChess {
     });
 
 
-    $('#pgn').hide();
   }
 
   squareClicked () {
@@ -62,7 +66,7 @@ class Danaids extends BaseChess {
 
   sparePieceClicked ($piece) {
     if (this.originalPiecesNumber !== 0) return;
-    
+
     // Clear all highlights since we'll want to only highlight valid squares
     this.clearHighlights();
     $(`.piece-417db`).removeClass(`highlight1-32417`);
@@ -120,7 +124,8 @@ class Danaids extends BaseChess {
         $newPiece.css({
           position: 'relative',
           zIndex: 1000
-        })
+        });
+        fallSFX.play();
         $newPiece.animate({
           top: $(document).height()
         },1000,() => {

@@ -10,21 +10,14 @@ class BaseChess {
   setup (depth) {
     console.log("BaseChess.setup");
 
-    let config = {
+    this.config = {
       draggable: false,
       position: 'start',
       onMoveEnd: () => {
-        if (this.lastMove === null) return;
-
-        if (this.lastMove.captured !== undefined) {
-          captureSFX.play();
-        }
-        else {
-          placeSFX.play();
-        }
-      }
+      },
+      moveSpeed: 200
     };
-    this.board = ChessBoard('board', config);
+    this.board = ChessBoard('board', this.config);
     this.game = new Chess();
 
     this.from = null;
@@ -37,9 +30,17 @@ class BaseChess {
     this.turn = 1;
     this.MOVE_SPEED = 100;
 
+    this.enableInput();
+  }
+
+  enableInput() {
     $('.square-55d63').on('click', (event) => {
       this.squareClicked(event);
     });
+  }
+
+  disableInput() {
+    $('.square-55d63').off('click');
   }
 
   updatePGN(move,note) {
@@ -72,12 +73,14 @@ class BaseChess {
     if (this.from === null && validPiece) {
       // We haven't selected a move yet + a piece of the correct colour was selected
       this.highlightMoves(square);
+      this.highlight(square);
     }
     else if (this.from !== null) {
       // We have already selected a square to move from (and thus a piece)
       if (validPiece) {
         // But now we're selecting another valid piece to move, so we should rehilight
         this.highlightMoves(square);
+        this.highlight(square);
       }
       else if ($(event.currentTarget).hasClass('highlight1-32417')) {
         let to = $(event.currentTarget).attr('data-square');
@@ -122,6 +125,15 @@ class BaseChess {
     // Update the board based on the new position
     this.board.position(this.game.fen(),true);
 
+    setTimeout(() => {
+      if (this.lastMove.captured !== undefined) {
+        captureSFX.play();
+      }
+      else {
+        placeSFX.play();
+      }
+    },this.config.moveSpeed * 1.1);
+
     // Reset the move tracking
     this.from = null;
 
@@ -139,10 +151,18 @@ class BaseChess {
     $(element).removeClass(`highlight1-32417`);
   }
 
-
   // Highlight the specified square
   highlight(square) {
     $('.square-'+square).addClass(`highlight1-32417`);
+  }
+
+  changeTurnTo(color) {
+    let fen = this.game.fen();
+    let fenArray = fen.split(' ');
+    fenArray[1] = color;
+    fenArray[3] = '-'; // Really don't get how this goes wonky and needs this 'fix'
+    fen = fenArray.join(' ');
+    this.game.load(fen);
   }
 
   moveBlack() {
@@ -151,6 +171,15 @@ class BaseChess {
     this.lastMove = this.game.move(move);
     this.updatePGN(this.lastMove,'');
     this.board.position(this.game.fen(),true);
+    setTimeout(() => {
+      if (this.lastMove.captured !== undefined) {
+        captureSFX.play();
+      }
+      else {
+        placeSFX.play();
+      }
+      this.enableInput();
+    },this.config.moveSpeed * 1.1);
   }
 
   getBlackMove() {

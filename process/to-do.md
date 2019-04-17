@@ -86,6 +86,14 @@
 ## Test
 
 - ~~Send to J+M and Jonathan and...?~~
+- ~~Danaids unclear? Just have them pour off and that's it? Simpler, but much less interactive. Instructions below instead of the PGN?~~
+- ~~Slow down the text (click/tap to continue?)~~
+- ~~10 peck Prometheus?~~
+- ~~__MAYBE SOLVED BY DISABLING INPUT WHENEVER WHITE NOT TO PLAY__ Prometheus king goes off board? (Make it a non-piece maybe??)~~
+- ~~Revisit SFX~~
+
+- Fix sound formats for all browser
+- Textbox weirdness in Firefox (issues around fonts I assume)
 
 ## Release
 

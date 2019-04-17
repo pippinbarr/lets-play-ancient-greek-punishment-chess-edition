@@ -35,11 +35,15 @@ class Sisyphus extends BaseChess {
     this.from = null;
 
     setTimeout(() => {
+      placeSFX.play();
       this.game.undo();
       // Update the board based on the new position
       this.board.position(this.game.fen(),true);
       $('#pgn').html(``);
       this.pgn = ``;
-    },500);
+      setTimeout(() => {
+        placeSFX.play();
+      },this.config.moveSpeed * 1.1);
+    },this.config.moveSpeed * 1.1);
   }
 }

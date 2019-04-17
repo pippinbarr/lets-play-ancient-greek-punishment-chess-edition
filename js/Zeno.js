@@ -91,15 +91,29 @@ class Zeno extends BaseChess {
       this.lastMove.san += ' 0-1';
       this.updatePGN(this.lastMove,note);
       this.board.position(this.game.fen(),true);
-      setTimeout(() => { this.resetGame(); }, 2000);
+      setTimeout(() => {
+        if (this.lastMove.captured !== undefined) {
+          captureSFX.play();
+        }
+        else {
+          placeSFX.play();
+        }
+      },this.config.moveSpeed * 1.1);
+      setTimeout(() => { this.resetGame() },RESET_TIME);
       return;
     }
 
     this.updatePGN(this.lastMove,'');
     this.board.position(this.game.fen(),true);
-
-
-    setTimeout(() => { this.zenoMoveWhite(); }, this.MOVE_SPEED);
+    setTimeout(() => {
+      if (this.lastMove.captured !== undefined) {
+        captureSFX.play();
+      }
+      else {
+        placeSFX.play();
+      }
+      this.zenoMoveWhite();
+    },this.config.moveSpeed * 1.1);
   }
 
   zenoMoveWhite () {
@@ -139,10 +153,13 @@ class Zeno extends BaseChess {
     this.piece.animate({
       top: `${this.targetY}px`,
       left: `${this.targetX}px`,
-    },1000, () => {
-      console.log(`post animation: ${this.piece.offset().top}`)
-      setTimeout(() => { this.zenoMoveBlack(); }, 500);
+    },500, () => {
+      attackSFX.play();
+      setTimeout(() => {
+        this.zenoMoveBlack(); },
+        500);
     });
+
   }
 
   updatePGN(move,note) {

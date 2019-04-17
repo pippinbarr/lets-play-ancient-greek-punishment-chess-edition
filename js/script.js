@@ -17,11 +17,14 @@ const captureSFX = new Howl({
 const attackSFX = new Howl({
   src: ['assets/sounds/attack.wav']
 });
+const fallSFX = new Howl({
+  src: ['assets/sounds/fall.wav']
+});
 
 const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
-const FADE_TIME =  500;
-const QUOTE_TIME = 3000;
+const FADE_TIME =  1;//500;
+const RESET_TIME = 5000;
 
 $(document).ready(function () {
 
@@ -68,7 +71,13 @@ function menuButtonClicked() {
           chess = new GameClass();
           $('#game').fadeIn(500);
         });
-      },QUOTE_TIME);
+      },getTextTime($(`#${level}-interstitial .quote`).text()));
     })
   });
+}
+
+function getTextTime(text) {
+  let time = (text.length * 65);
+  return 1;
+  return time;
 }
