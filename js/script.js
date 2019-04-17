@@ -77,6 +77,6 @@ function menuButtonClicked() {
 }
 
 function getTextTime(text) {
-  let time = (text.length * 65);
+  let time = (text.length * 60);
   return time;
 }
