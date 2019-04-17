@@ -247,3 +247,25 @@ So this key question of how to handle game-ending stuff is pretty well handle I 
 Well I think it's kind of done, eh. There's definitely more I could do to make it slicker, but like everything I do it's pretty much conceptual with aesthetics being advanced far enough to support the idea and no further? In which case press kit etc. and release... Friday? Next week Wednesday? Tuesday? Bleagh?
 
 Actually just quietly went and tweaked the CSS a tiny bit and it looks nicer. And then fixed underline color on iOS (needed webkit version). And then fixed weird scrolling issue on iOS (wrapper height set to 100% and overflow hidden). And then ran into stuff with the pieces falling in Danaids causing ability to scroll. And then fighting against this. And then giving up. And this is why we despite mobile versions of our non-pure-canvas games, kids. Sheesh.
+
+---
+
+# Feeling peckish, winding up (Wednesday, 17 April 2019, 16:02PM)
+
+Okay now I think we're basically done at this point.
+
+## Feeling peckish
+
+After getting feedback from Jonathan about Prometheus I changed it so that now the attacking piece "pecks" the king until it dies (from lack of liver behind the scenes). Ten pecks and you're out. On the last peck the piece captures the king to indicate finality before the game resets.
+
+This is nice for various reasons, most obviously that it's just satisfying visually and sonically to see it happening, it's nice and active, but also
+
+- It functions as a call-across to Rogess (which has the same idea of a "peck" style attack)
+- It calls back to the original punishment games by more literally showing the idea of pecking (even at the expense of it being less chess-like I think this is nice, and it's good to get a bit surreal here and there)
+- It relates to a conversation with my CART263 students about the idea of being attacked by "birdlike" pieces. Funnily enough we decided that the bishop is the most birdlike and it happens to turn out that the AI actually targets and pecks the king with a bishop - through no control of my own.
+
+So that works out!
+
+## Winding up
+
+I think the game is about as done as I can make it, so it remains to send it out to press and pick a release date. I was thinking of Tuesday next week, so perhaps I'll do that.

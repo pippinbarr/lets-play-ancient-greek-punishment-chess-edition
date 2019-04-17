@@ -92,16 +92,17 @@
 - ~~__MAYBE SOLVED BY DISABLING INPUT WHENEVER WHITE NOT TO PLAY__ Prometheus king goes off board? (Make it a non-piece maybe??)~~
 - ~~Revisit SFX~~
 - ~~Fix sound formats for all browser~~
-
-- Textbox weirdness in Firefox (issues around fonts I assume)
+- ~~__DON'T FEEL LIKE THERE'S ANYTHING I CAN DO__ Textbox weirdness in Firefox (issues around fonts I assume)~~
 
 ## Release
 
 - ~~Make press kit~~
+- ~~Sigh about it~~
+- ~~Laugh about it~~
 
 - Send to press
 - Make webpage for my site
-- Sigh about it
+
 
 ## Bugs
 
