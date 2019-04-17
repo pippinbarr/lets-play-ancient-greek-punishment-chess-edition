@@ -7,7 +7,7 @@ _Chess! It already feels like a punishment to so many people! But now even more 
 ## The basics
 
 * Developer: [Pippin Barr](http://www.pippinbarr.com/)
-* Release: 24 April 2019
+* Release: 23 April 2019
 * Platform: Browser (desktop and mobile)
 * Code repository: https://github.com/pippinbarr/lets-play-ancient-greek-punishment-chess-edition
 * Price: $0.00
