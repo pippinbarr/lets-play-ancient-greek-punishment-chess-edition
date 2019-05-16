@@ -61,7 +61,7 @@ See animated GIFs below, really.
 
 ## Press
 
-- Coming soon?
+- Nate Crowley. [Experience eternity in five minutes with Ancient Greek Punishment: Chess Edition](https://www.rockpapershotgun.com/2019/05/15/experience-eternity-in-five-minutes-with-ancient-greek-punishment-chess-edition/#comments). Rock, Paper, Shotgun. 15 May 2019.
 
 ## Additional Links
 
