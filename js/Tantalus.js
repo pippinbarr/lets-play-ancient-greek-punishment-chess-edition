@@ -19,7 +19,7 @@ class Tantalus extends BaseChess {
     $('#header').html(`Tantalus vs. Zeus`)
     $('#sub-header').html(`Game #${this.gameNumber}${winNote}<br \>Hades, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`)
 
-    this.game.load('rnbq1bnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w kq - 0 1');
+    this.game.load('rnbq1bnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQ - 0 1');
     this.board.position(this.game.fen(),false);
 
     this.squareSize = $('.square-55d63').width();
