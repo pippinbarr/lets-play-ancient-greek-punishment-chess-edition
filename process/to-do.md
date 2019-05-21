@@ -99,9 +99,8 @@
 - ~~Make press kit~~
 - ~~Sigh about it~~
 - ~~Laugh about it~~
-
-- Send to press
-- Make webpage for my site
+- ~~Send to press~~
+- ~~Make webpage for my site~~
 
 
 ## Bugs
