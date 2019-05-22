@@ -1,18 +1,30 @@
 # _Let's Play: Ancient Greek Punishment: Chess Edition_ Closing Statement
 
-(__Note__: throughout this text, I’ll be linking to process materials generated as part of the project in its [code repository](https://github.com/pippinbarr/lets-play-ancient-greek-punishment-chess-edition/blob/master/process/README.md). The links are both to specific moments I added relevant code to the project and wrote notes about it and to the process journal I wrote throughout design and development. This approach to process documentation is part of the [Games as Research](https://gamesasresearch.com/) project.)
+(__Note__: throughout this text, I’ll be linking to process materials generated as part of the project in its [code repository](https://github.com/pippinbarr/lets-play-ancient-greek-punishment-chess-edition/blob/master/process/README.md). The links are both to the specific moments I added relevant code to the project and wrote notes about it and also to the process journal I wrote throughout design and development. This approach to process documentation is part of the [Games as Research](https://gamesasresearch.com/) project.)
 
-[_Let's Play: Ancient Greek Punishment: Chess Edition_](https://pippinbarr.github.io/lets-play-ancient-greek-punishment-chess-edition/) is the eighth addition to my overall series of games based on the mythological punishments of Sisypuhs, Prometheus, Tantalus, the Danaids, and (less canonically) Zeno of Elea. In _Chess Edition_ I sought to tell these stories of punishment through the language of chess (and perhaps specifically computer chess).
+[_Let's Play: Ancient Greek Punishment: Chess Edition_](https://pippinbarr.github.io/lets-play-ancient-greek-punishment-chess-edition/) is the eighth addition to a series of games based on the mythological punishments of Sisypuhs, Prometheus, Tantalus, the Danaids, and (less canonically) Zeno of Elea. In _Chess Edition_ I tried to tell these stories of punishment through the language of chess (and perhaps specifically computer chess).
 
-As the series accumulates, it continues to please me as a way to think through specifics of design - with the core concepts (the myths) set in place, the decisions to be made a distilled down to close reading of the design implications of a particular conceptual take ("what if you were the boulder resisting Sisyphuhs?") or a specific platform (how do I represent these ideas through the language of chess?). Chess is particularly satisfying in that it represents an almost platonic understanding of a "game", so translating the myths to chess feels like an ultimate game-designer activity. Because chess is such a clear set of rules and representations, you end up getting a kind of extreme clarity on changing those elements "toward" the myths. More specifically, I think it feels very much like an exercise in treating both chess and the myths as powerful _metaphors_ in order to find ways to bring them together.
+As the series accumulates, it continues to serve as a way to think through specifics of design: with the core concepts (the myths) set in place, the decisions to be made can be distilled down to the design implications of a particular conceptual take ("what if _you were the boulder_ resisting Sisyphus?") or a specific form (how do I represent these ideas through the language of _chess_?). Chess is particularly satisfying in that it represents an almost platonic understanding of a "game", so translating the myths to chess feels like an ultimate game-designerly activity.
 
-Beyond this kind of highfalutin design stuff, this project also interests me significantly at the level of the underlying technology. I'm using [chess.js](https://github.com/jhlywa/chess.js), a JavaScript chess library, and [chessboard.js](https://chessboardjs.com/), a JavaScript chessboard, and both naturally have a particular "grain" to how they do their jobs, making some things easier than others. I find it nice to think about chess.js especially as manifestation of "pure chess" in code form, giving chess an almost tangible agency in the project.
+Beyond this kind of highfalutin design stuff, the project also interests me significantly at the level of the underlying technology. I'm using [chess.js](https://github.com/jhlywa/chess.js), a JavaScript chess library, and [chessboard.js](https://chessboardjs.com/), a JavaScript chessboard, and both naturally have a particular "grain" to how they do their jobs, making some things easier or more "obvious" than others. I find it nice to think about chess.js especially as manifestation of "pure chess" in code form, giving the abstract existence of chess a tangible agency in the project.
 
-In the following, I want to focus in on each of the five sub-games in _Chess Edition_ in order to reflect on the design trajectories followed to reach their final form. It doesn't always look like it at the end, but game design and development is an uncertain road that takes serious time and effort to find your way along. A major part of my documentation process is about exposing those elements of my games openly.
+In the following, I want to focus in on each of the five sub-games in _Chess Edition_ in order to reflect on specific elements of the design trajectories followed to reach their final form. In keeping with the Games as Research project, a lot of what I'm interested in here is revealing the inner workings of design and development, the mistakes made, the decisions reconsidered, and so on.
 
 ## Sisyphus undone
 
+Sisyphus was both the first game I envisaged in chess-form and the easiest to actually implement. From the beginning the idea was to allow the player to make an opening move (say "e4"), only to have the piece fall back to its original position, just as the boulder rolls back down the hill. It feels like a particularly pure representation of the myth and is aided in this computer-chess context by the traditional representation of white as the bottom of a vertical board, lending a sense of "falling back down" to the piece that would be there in other orientations.
+
+__ANIMATED GIF? THEY'RE PRETTY BULKY... DEBULK THEM?__
+
+This variation is important to me in how precisely this myth experience is mirrored in the underlying code using the two chess libraries. Using chess.js the code calls a "move" function to move the piece, then almost immediately called an "undo" function to put it back where it was. Thus this doing and undoing is literally true at the level of code. chessboard.js is similarly cooperative in that it animates the movement of the piece and its undone movement faithfully without any intervention from me (it doesn't care about the frustrating nature of the undone move, just like the gods).
+
+__IMAGE OF CODE__
+
+So, in the end there were few decisions or changes to make here: chess, code, and punishment were in perfect harmony and it was only a matter of "discovering" this through the process of making.
+
 ## The apple king
+
+
 
 ## What's the right game-feel for having your liver pecked out?
 
@@ -22,12 +34,6 @@ In the following, I want to focus in on each of the five sub-games in _Chess Edi
 
 ---
 
-
-
-- Sisyphus: the easiest conceptually, working with the grain of the engine produces a very straightforward design and implementation that "just works". The sense of underlying "truth" is nice.
-  - Working with the chess system to produce an effect
-  - underneath you literally have game.undo() and the fact that board.position() animates produces the effect of Sisyphus, rather than needing to animate it myself.
-  - It's "true" in this sense. It "just works" relative to the system of libraries.
 
 - Tantalus: the story of working out the core visual comedy, and then building toward genuinely interactive comedy, metaphohr
   - Comedy and chess, sight gag (king off board),
