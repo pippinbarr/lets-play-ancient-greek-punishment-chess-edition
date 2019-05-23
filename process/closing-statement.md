@@ -18,9 +18,9 @@ Sisyphus was both the first game I envisaged in chess-form and the easiest to im
 
 This variation is important to me in how precisely the myth is mirrored in the underlying code using the two chess libraries. Using chess.js the code calls a `move` function to move the piece, then almost immediately called an `undo` function to put it back where it was. Thus doing and undoing is literally true at the level of code. chessboard.js is similarly cooperative in that it animates the movement of the piece and its undone movement faithfully without any intervention from me (it doesn't care about the frustrating nature of the undone move, just like the gods).
 
-![](images/code-game-move.png)
+![](images/code-game-move.PNG)
 
-![](images/code-game-undo.png)
+![](images/code-game-undo.PNG)
 
 So, in the end there were few decisions or changes to make here: chess, code, and punishment were in harmony and it was only a matter of "discovering" this through the process of making.
 
@@ -28,7 +28,7 @@ So, in the end there were few decisions or changes to make here: chess, code, an
 
 In the Tantalus game I knew early on that I wanted to have the black king be off the board and thus unattainable - the myth's punishment is all about an unattainable object of desire (an apple/piece of fruit in the original) and it makes sense to me that the object of "desire" in chess is the opponent's king. However, when I tried to simply begin a chess game without the black king on the board it turned out to break chess.js, which isn't able to process legal moves in this scenario ([0a08d10](https://github.com/pippinbarr/lets-play-ancient-greek-punishment-chess-edition/commit/0a08d10ec76cd546afcdca85a014dd221adf6631)). This led to a moment of truth where I had to decide whether to do battle with the underlying chess code itself, or trying another approach, and initially I went the "easy" way by attempting a version where there were simply no black pieces on the board at all ([4452f40](https://github.com/pippinbarr/lets-play-ancient-greek-punishment-chess-edition/commit/4452f40d6b94f3bdc7c0edfdb3e4d561dc0a7527)). As I [noted in my process journal](https://github.com/pippinbarr/lets-play-ancient-greek-punishment-chess-edition/blob/master/process/process-journal.md#tantalus), though, this rang false with the myth: "philosophically this one would be suggesting that part of the point of chess is the destruction of the opposing army, which is less pure than solely thinking in terms of capturing the king."
 
-![](images/tantalus-king-off.png)
+![](images/tantalus-king-off.PNG)
 
 So it became clear I needed to solve the issues around having just the black king off the board and I went ahead to edit chess.js to allow for this, eventually succeeding: Tantalus looks so much better with just the king gone. The joke is much stronger, and there's something terrible and funny about playing chess in this context, knowing  you cannot possibly win and can at best end up capturing every black piece, only to have the king perpetually out of reach" ([8168f81](https://github.com/pippinbarr/lets-play-ancient-greek-punishment-chess-edition/commit/8168f81dbc5966b5b86843a46c6c6c90052e9fdd)). Having solved the core technical problem, it remained to tune the comedy of the kingless board by having the black king "step off" after white's first move ([eda45d2](https://github.com/pippinbarr/lets-play-ancient-greek-punishment-chess-edition/commit/eda45d2eed90bfbef7d20695f4a860a91b8b4014)), though on reflection I clearly missed the opportunity to also register this stepping off as officially black's "opening" in the game, complete with notation (`1. e4 Ke9` perhaps, or even `1. e4 K??`).
 
