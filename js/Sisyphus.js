@@ -16,6 +16,7 @@ class Sisyphus extends BaseChess {
       to: to,
       promotion: 'q' // NOTE: always promote to a queen for example simplicity
     };
+
     this.lastMove = this.game.move(move);
 
     if (this.lastMove.color === 'w') {
@@ -36,7 +37,9 @@ class Sisyphus extends BaseChess {
 
     setTimeout(() => {
       placeSFX.play();
+
       this.game.undo();
+
       // Update the board based on the new position
       this.board.position(this.game.fen(),true);
       $('#pgn').html(``);
