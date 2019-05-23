@@ -117,6 +117,7 @@ class Zeno extends BaseChess {
   }
 
   zenoMoveWhite () {
+    console.log(this.piece.attr('data-piece'));
     // Calculate the distance and the corresponding target
     this.dx = (this.destinationX - this.piece.offset().left) /  2;
     this.dy = (this.destinationY - this.piece.offset().top) /  2;
@@ -138,7 +139,14 @@ class Zeno extends BaseChess {
     let rank = `$\(${this.destRank} - {1 \\over {2^{${this.count}}}}\)$`;
 
     let test = Math.pow(2,this.count);
-    this.moveExpression = `${file}${rank}`;
+
+    let type = this.piece.attr('data-piece')[1];
+    if (type != 'P') {
+      this.moveExpression = `${type}${file}${rank}`;
+    }
+    else {
+      this.moveExpression = `${file}${rank}`;
+    }
 
     let move = {
       san: `${this.moveExpression}`,
