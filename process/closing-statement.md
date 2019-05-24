@@ -1,5 +1,9 @@
 # _Let's Play: Ancient Greek Punishment: Chess Edition_ Closing Statement
 
+---
+
+# Design trajectories in _Let's Play: Ancient Greek Punishment: Chess Edition_
+
 (__Note__: throughout this text, I’ll be linking to process materials generated as part of the project in its [code repository](https://github.com/pippinbarr/lets-play-ancient-greek-punishment-chess-edition/blob/master/process/README.md). The links are both to the specific moments I added relevant code to the project and wrote notes about it - signified by the mysterious strings of letters and numbers known as "commit hashes" - and also to the process journal I wrote throughout design and development. This approach to process documentation is part of the [Games as Research](https://gamesasresearch.com/) project.)
 
 [_Let's Play: Ancient Greek Punishment: Chess Edition_](https://pippinbarr.github.io/lets-play-ancient-greek-punishment-chess-edition/) is the eighth addition to a series of games based on the mythological punishments of Sisypuhs, Prometheus, Tantalus, the Danaids, and (less canonically) Zeno of Elea. In _Chess Edition_ I tried to tell these stories of punishment through the language of chess (and perhaps specifically computer chess).
