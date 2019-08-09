@@ -25,7 +25,7 @@ class Tantalus extends BaseChess {
     this.squareSize = $('.square-55d63').width();
     this.$king = $(`<img src="assets/images/chesspieces/wikipedia/bK.png" alt="" style="width: ${this.squareSize}px; height: ${this.squareSize}px;">`)
     this.$king.css({
-      position: 'relative',
+      position: 'absolute',
       top: 0,
       left: 0
     });
